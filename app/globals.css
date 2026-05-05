@@ -1,23 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070a12;
-  --foreground: #f8fafc;
-  --card: #0d1322;
-  --card-foreground: #f8fafc;
-  --popover: #0d1322;
-  --popover-foreground: #f8fafc;
-  --primary: #4f8cff;
+  --background: #03040b;
+  --foreground: #f4f4f5;
+  --card: #090b14;
+  --card-foreground: #f4f4f5;
+  --popover: #090b14;
+  --popover-foreground: #f4f4f5;
+  --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #172033;
+  --secondary: #1e243b;
   --secondary-foreground: #dbeafe;
-  --muted: #121a2b;
+  --muted: #111526;
   --muted-foreground: #94a3b8;
-  --accent: #7c3aed;
+  --accent: #6366f1;
   --accent-foreground: #ffffff;
-  --border: #243047;
-  --input: #243047;
-  --ring: #60a5fa;
+  --border: #1e243b;
+  --input: #1e243b;
+  --ring: #3b82f6;
+  
+  --radius: 0.75rem;
 }
 
 @theme inline {
@@ -40,6 +42,13 @@
   --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-rise: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
 body {
