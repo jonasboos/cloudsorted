@@ -19,8 +19,8 @@ export default function AgentPage() {
     <div>
       <PageHeader
         eyebrow="Agent Steuerung"
-        title="Ein klarer Kontrollraum fuer automatische Ordnung."
-        description="Konfiguriere, wie mutig der Agent in der Demo sortieren wuerde. Die Controls sind rein visuell und fuehren keine Aktionen aus."
+        title="Ein klarer Kontrollraum für automatische Ordnung."
+        description="Konfiguriere, wie mutig der Agent in der Demo sortieren würde. Die Controls sind rein visuell und führen keine Aktionen aus."
         action={
           <Button className="h-11 rounded-lg">
             <Play className="size-4" />
@@ -33,12 +33,12 @@ export default function AgentPage() {
         <StatCard
           title="Modus"
           value="Review first"
-          detail="Vorschlaege werden vor Aenderungen gesammelt."
+          detail="Vorschläge werden vor Änderungen gesammelt."
           icon={Bot}
           tone="blue"
         />
         <StatCard
-          title="Naechster Lauf"
+          title="Nächster Lauf"
           value="09:30"
           detail="Zeitplan als statische Dashboard-Anzeige."
           icon={Clock3}
@@ -60,13 +60,13 @@ export default function AgentPage() {
               <SlidersHorizontal className="size-5 text-blue-200" />
               Verhalten
             </CardTitle>
-            <CardDescription>Demo-Parameter fuer die Agentenlogik</CardDescription>
+            <CardDescription>Demo-Parameter für die Agentenlogik</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             {[
               ["Automatisierungsgrad", "Vorsichtig", 42],
-              ["Projekt-Erkennung", "Praezise", 78],
-              ["Archiv-Aggressivitaet", "Niedrig", 28],
+              ["Projekt-Erkennung", "Präzise", 78],
+              ["Archiv-Aggressivität", "Niedrig", 28],
             ].map(([label, detail, value]) => (
               <div key={label as string} className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -86,7 +86,7 @@ export default function AgentPage() {
           <CardHeader className="flex flex-row items-start justify-between gap-4">
             <div>
               <CardTitle className="text-white">Lauf-Vorschau</CardTitle>
-              <CardDescription>Was der Agent im naechsten Demo-Lauf prueft</CardDescription>
+              <CardDescription>Was der Agent im nächsten Demo-Lauf prüft</CardDescription>
             </div>
             <StatusPill tone="emerald">Bereit</StatusPill>
           </CardHeader>
@@ -94,7 +94,7 @@ export default function AgentPage() {
             {[
               ["Neue Kundenordner erkennen", "Kunde, Projekt und Datum extrahieren", true],
               ["Unsichere Treffer parken", "Alles unter 80% Confidence bleibt in Review", true],
-              ["Alte Entwuerfe archivieren", "Dateien aelter als 180 Tage markieren", false],
+              ["Alte Entwürfe archivieren", "Dateien älter als 180 Tage markieren", false],
             ].map(([title, text, active]) => (
               <div
                 key={title as string}

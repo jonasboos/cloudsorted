@@ -44,9 +44,9 @@ export default function DashboardPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Workspace Uebersicht"
-        title="Ein ruhiges Cockpit fuer deine Cloud-Ordnung."
-        description="Der Prototyp zeigt, wie CloudSorted Dateien analysiert, Vorschlaege vorbereitet und Risiken sichtbar macht. Alles hier ist reines Frontend."
+        eyebrow="Workspace Übersicht"
+        title="Ein ruhiges Cockpit für deine Cloud-Ordnung."
+        description="Der Prototyp zeigt, wie CloudSorted Dateien analysiert, Vorschläge vorbereitet und Risiken sichtbar macht. Alles hier ist reines Frontend."
         action={
           <Button className="h-11 rounded-lg">
             <Zap className="size-4" />
@@ -80,7 +80,7 @@ export default function DashboardPage() {
         <StatCard
           title="Ordnungs-Score"
           value="86%"
-          detail="Statischer Score fuer die Dashboard-Darstellung."
+          detail="Statischer Score für die Dashboard-Darstellung."
           icon={Sparkles}
           tone="amber"
         />
@@ -90,7 +90,7 @@ export default function DashboardPage() {
         <Card className="border-white/10 bg-white/[0.035]">
           <CardHeader className="flex flex-row items-start justify-between gap-4">
             <div>
-              <CardTitle className="text-white">Aktivitaet</CardTitle>
+              <CardTitle className="text-white">Aktivität</CardTitle>
               <CardDescription>Die wichtigsten Demo-Ereignisse</CardDescription>
             </div>
             <StatusPill tone="slate">Heute</StatusPill>
@@ -125,13 +125,13 @@ export default function DashboardPage() {
         <Card className="border-white/10 bg-white/[0.035]">
           <CardHeader>
             <CardTitle className="text-white">Heute optimiert</CardTitle>
-            <CardDescription>Mock-Metriken fuer die Startseite</CardDescription>
+            <CardDescription>Mock-Metriken für die Startseite</CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
             {[
               ["Dubletten erkannt", 72, "bg-emerald-300"],
               ["Regeln angewendet", 58, "bg-blue-300"],
-              ["Freigaben geprueft", 41, "bg-amber-300"],
+              ["Freigaben geprüft", 41, "bg-amber-300"],
             ].map(([label, value, color]) => (
               <div key={label as string} className="space-y-2">
                 <div className="flex justify-between text-sm">

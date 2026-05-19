@@ -18,20 +18,20 @@ const tree = [
   { name: "Mayer_2026-05-18_Briefing.docx", type: "file", level: 4, tag: "Neu" },
   { name: "Mayer_2026-05-18_Angebot.pdf", type: "file", level: 4, tag: "Neu" },
   { name: "Review", type: "folder", level: 1, tone: "amber" },
-  { name: "final_final_rechnung.pdf", type: "file", level: 2, tag: "Pruefen" },
+  { name: "final_final_rechnung.pdf", type: "file", level: 2, tag: "Prüfen" },
 ];
 
 export default function VorschauPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Aenderungsvorschau"
-        title="Vorher sehen, was die Ordnung veraendern wuerde."
-        description="Diese Ansicht visualisiert eine geplante Zielstruktur. Es wird nichts verschoben, geloescht oder synchronisiert."
+        eyebrow="Änderungsvorschau"
+        title="Vorher sehen, was die Ordnung verändern würde."
+        description="Diese Ansicht visualisiert eine geplante Zielstruktur. Es wird nichts verschoben, gelöscht oder synchronisiert."
         action={
           <Button className="h-11 rounded-lg">
             <SearchCheck className="size-4" />
-            Vorschau pruefen
+            Vorschau prüfen
           </Button>
         }
       />
@@ -41,7 +41,7 @@ export default function VorschauPage() {
           <CardHeader className="flex flex-row items-start justify-between gap-4">
             <div>
               <CardTitle className="text-white">Zielstruktur</CardTitle>
-              <CardDescription>Statische Baumansicht fuer geplante Dateiordnung</CardDescription>
+              <CardDescription>Statische Baumansicht für geplante Dateiordnung</CardDescription>
             </div>
             <StatusPill tone="emerald">Bereit</StatusPill>
           </CardHeader>
@@ -80,9 +80,9 @@ export default function VorschauPage() {
 
         <div className="grid gap-4">
           {[
-            ["42", "Dateien wuerden sauber gruppiert"],
+            ["42", "Dateien würden sauber gruppiert"],
             ["7", "Elemente bleiben im Review"],
-            ["0", "Aenderungen ohne Freigabe"],
+            ["0", "Änderungen ohne Freigabe"],
           ].map(([value, label]) => (
             <Card key={label} className="border-white/10 bg-white/[0.035]">
               <CardContent className="flex items-center gap-4 p-5">

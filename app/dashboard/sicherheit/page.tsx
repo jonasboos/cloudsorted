@@ -17,7 +17,7 @@ export default function SicherheitPage() {
     <div>
       <PageHeader
         eyebrow="Privacy"
-        title="Sicherheit sichtbar machen, ohne den Workflow zu stoeren."
+        title="Sicherheit sichtbar machen, ohne den Workflow zu stören."
         description="Die Seite zeigt Freigaben, Schutzstatus und Audit-Hinweise als statische Frontend-Ansicht."
         action={
           <Button className="h-11 rounded-lg">
@@ -31,7 +31,7 @@ export default function SicherheitPage() {
         <StatCard
           title="Privacy Score"
           value="92"
-          detail="Statischer Score fuer den Demo-Workspace."
+          detail="Statischer Score für den Demo-Workspace."
           icon={Shield}
           tone="emerald"
         />
@@ -55,13 +55,13 @@ export default function SicherheitPage() {
         <Card className="border-white/10 bg-white/[0.035]">
           <CardHeader>
             <CardTitle className="text-white">Schutzoptionen</CardTitle>
-            <CardDescription>Visuelle Toggles fuer Sicherheits-Features</CardDescription>
+            <CardDescription>Visuelle Toggles für Sicherheits-Features</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {[
               ["Zwei-Faktor-Hinweise", "Warnen, wenn ein Account ohne 2FA wirkt", true],
-              ["Public-Link Review", "Oeffentliche Freigaben vorziehen", true],
-              ["Sensible Dateien markieren", "Ausweise und Vertraege in Review halten", true],
+              ["Public-Link Review", "Öffentliche Freigaben vorziehen", true],
+              ["Sensible Dateien markieren", "Ausweise und Verträge in Review halten", true],
               ["Automatische Sperre", "Nur als UI-Demo dargestellt", false],
             ].map(([title, detail, enabled]) => (
               <div
@@ -83,7 +83,7 @@ export default function SicherheitPage() {
           <CardHeader className="flex flex-row items-start justify-between gap-4">
             <div>
               <CardTitle className="text-white">Audit Log</CardTitle>
-              <CardDescription>Kurze Timeline fuer sicherheitsrelevante Hinweise</CardDescription>
+              <CardDescription>Kurze Timeline für sicherheitsrelevante Hinweise</CardDescription>
             </div>
             <StatusPill tone="amber">3 Hinweise</StatusPill>
           </CardHeader>
@@ -98,7 +98,7 @@ export default function SicherheitPage() {
 
             {[
               [CheckCircle2, "Cloud-Token aktuell", "Heute 14:02", "text-emerald-300"],
-              [AlertTriangle, "Oeffentlicher Link erkannt", "Heute 12:45", "text-amber-300"],
+              [AlertTriangle, "Öffentlicher Link erkannt", "Heute 12:45", "text-amber-300"],
               [Shield, "Review-Regel angewendet", "Gestern", "text-blue-300"],
             ].map(([Icon, title, time, color]) => {
               const LogIcon = Icon as typeof Shield;

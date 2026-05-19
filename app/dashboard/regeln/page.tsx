@@ -25,14 +25,14 @@ const rules = [
     enabled: true,
   },
   {
-    title: "Entwuerfe markieren",
+    title: "Entwürfe markieren",
     detail: "draft, copy und final_final in Review verschieben",
     tone: "amber" as const,
     enabled: true,
   },
   {
-    title: "Private Dateien schuetzen",
-    detail: "Ausweise, Vertraege und Rechnungen nie automatisch teilen",
+    title: "Private Dateien schützen",
+    detail: "Ausweise, Verträge und Rechnungen nie automatisch teilen",
     tone: "emerald" as const,
     enabled: false,
   },
@@ -43,8 +43,8 @@ export default function RegelnPage() {
     <div>
       <PageHeader
         eyebrow="Sortierlogik"
-        title="Regeln, die sich wie ein echtes Ordnungssystem anfuehlen."
-        description="Diese Seite zeigt Frontend-only Regeln fuer Benennung, Zuordnung und Review-Workflows."
+        title="Regeln, die sich wie ein echtes Ordnungssystem anfühlen."
+        description="Diese Seite zeigt Frontend-only Regeln für Benennung, Zuordnung und Review-Workflows."
         action={
           <Button className="h-11 rounded-lg">
             <Plus className="size-4" />
@@ -75,14 +75,14 @@ export default function RegelnPage() {
               <GitBranch className="size-5 text-violet-200" />
               Entscheidungsbaum
             </CardTitle>
-            <CardDescription>Frontend-Darstellung der Regel-Prioritaeten</CardDescription>
+            <CardDescription>Frontend-Darstellung der Regel-Prioritäten</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3">
             {[
-              ["1", "Sensible Inhalte blockieren", "Immer zuerst pruefen"],
+              ["1", "Sensible Inhalte blockieren", "Immer zuerst prüfen"],
               ["2", "Kunden- und Projektmuster erkennen", "Ordnerziel vorschlagen"],
               ["3", "Naming normalisieren", "Dateinamen lesbar machen"],
-              ["4", "Unsichere Treffer in Review legen", "Keine automatische Aenderung"],
+              ["4", "Unsichere Treffer in Review legen", "Keine automatische Änderung"],
             ].map(([step, title, detail]) => (
               <div key={step} className="flex gap-4 rounded-lg border border-white/10 bg-[#080b16] p-4">
                 <span className="grid size-8 shrink-0 place-items-center rounded-md bg-white/[0.05] text-sm font-semibold text-white">
@@ -100,7 +100,7 @@ export default function RegelnPage() {
         <Card className="border-white/10 bg-white/[0.035]">
           <CardHeader>
             <CardTitle className="text-white">Regel-Bibliothek</CardTitle>
-            <CardDescription>Schnelle Templates fuer die Demo</CardDescription>
+            <CardDescription>Schnelle Templates für die Demo</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3">
             {[

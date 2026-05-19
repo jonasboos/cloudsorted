@@ -41,10 +41,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   {
-    title: "Uebersicht",
+    title: "Übersicht",
     href: "/dashboard",
     icon: LayoutDashboard,
-    description: "Status, Score und Aktivitaet",
+    description: "Status, Score und Aktivität",
   },
   {
     title: "Agent",
@@ -68,7 +68,7 @@ const navItems = [
     title: "Vorschau",
     href: "/dashboard/vorschau",
     icon: Eye,
-    description: "Geplante Struktur pruefen",
+    description: "Geplante Struktur prüfen",
   },
   {
     title: "Sicherheit",

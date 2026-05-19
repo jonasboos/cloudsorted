@@ -19,7 +19,7 @@ export default function EinstellungenPage() {
       <PageHeader
         eyebrow="Settings"
         title="Einstellungen ohne Ablenkung."
-        description="Profil, Workspace und Demo-Praeferenzen sind als klare Frontend-Formulare dargestellt."
+        description="Profil, Workspace und Demo-Präferenzen sind als klare Frontend-Formulare dargestellt."
         action={<StatusPill tone="slate">Keine Backend-Funktion</StatusPill>}
       />
 
@@ -30,7 +30,7 @@ export default function EinstellungenPage() {
               <UserRound className="size-5 text-blue-200" />
               Profil
             </CardTitle>
-            <CardDescription>Statische Formularfelder fuer die Demo</CardDescription>
+            <CardDescription>Statische Formularfelder für die Demo</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
@@ -41,7 +41,7 @@ export default function EinstellungenPage() {
               <Label htmlFor="email">E-Mail</Label>
               <Input id="email" defaultValue="demo@cloudsorted.app" />
             </div>
-            <Button className="w-full">Aenderungen anzeigen</Button>
+            <Button className="w-full">Änderungen anzeigen</Button>
           </CardContent>
         </Card>
 
@@ -49,7 +49,7 @@ export default function EinstellungenPage() {
           {[
             [Bell, "Benachrichtigungen", "Wichtige Hinweise und Review-Items anzeigen", true],
             [Mail, "Wochenbericht", "Zusammenfassung der erkannten Ordnungschancen", true],
-            [Palette, "Kompakte Ansicht", "Dichtere Listen fuer wiederkehrende Nutzung", false],
+            [Palette, "Kompakte Ansicht", "Dichtere Listen für wiederkehrende Nutzung", false],
             [CreditCard, "Plan-Hinweise", "Billing-Karte nur als statisches Element", false],
           ].map(([Icon, title, detail, enabled]) => {
             const SettingIcon = Icon as typeof Bell;
