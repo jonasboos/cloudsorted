@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle2,
@@ -107,8 +108,8 @@ export function InteractiveCloudDemo() {
               className="flex-1 flex flex-col items-center justify-center p-8 text-center"
             >
               <div className="max-w-md space-y-6">
-                <div className="size-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6">
-                  <Cloud className="size-10 text-primary" />
+                <div className="size-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                  <Image src="/assets/logo_mark.png" alt="Logo" width={48} height={48} className="object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">Verbinde deine Cloud</h3>
                 <p className="text-muted-foreground">Wähle deinen Speicherort aus, um den Agenten mit der Analyse deiner Dateistruktur zu beauftragen.</p>

@@ -46,7 +46,7 @@ const workflow = [
   {
     title: "1. Cloud verbinden",
     text: "Google Drive oder OneDrive mit einem Klick anbinden. Volle Sicherheit, keine echten Änderungen im Demo-Modus.",
-    icon: Cloud,
+    icon: null,
   },
   {
     title: "2. KI-Analyse",
@@ -76,8 +76,8 @@ export default function Home() {
       <header className="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-background/60 backdrop-blur-2xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative size-10 rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-lg transition-all duration-300 group-hover:shadow-primary/20 group-hover:border-primary/40">
-              <Image src="/assets/logo_mark.png" alt="Logo" width={40} height={40} className="object-cover transition-transform duration-300 group-hover:scale-110" />
+            <div className="relative size-10 rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-lg transition-all duration-300 group-hover:shadow-primary/20 group-hover:border-primary/40 p-1">
+              <Image src="/assets/logo_mark.png" alt="CloudSorted Logo - KI-Cloud-Agent" width={40} height={40} className="object-contain transition-transform duration-300 group-hover:scale-110" />
             </div>
             <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
               CloudSorted
@@ -159,7 +159,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <Image 
                   src="/assets/cloud_header.png" 
-                  alt="CloudSorted Abstract Cloud" 
+                  alt="CloudSorted Abstraktes Cloud-Interface" 
                   fill
                   className="object-cover opacity-80 mix-blend-screen p-8 animate-float"
                   priority
@@ -230,8 +230,15 @@ export default function Home() {
             {workflow.map((item, index) => (
               <Card key={index} className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group">
                 <CardHeader>
-                  <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                    <item.icon className="size-7 text-primary" />
+                  <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-white/10 group-hover:scale-110 transition-transform duration-300 overflow-hidden p-3">
+                    {(() => {
+                      const Icon = item.icon as any;
+                      return Icon ? (
+                        <Icon className="size-7 text-primary" />
+                      ) : (
+                        <Image src="/assets/logo_mark.png" alt="CloudSorted Logo" width={32} height={32} className="object-cover" />
+                      );
+                    })()}
                   </div>
                   <CardTitle className="text-xl text-white">{item.title}</CardTitle>
                 </CardHeader>
@@ -251,7 +258,7 @@ export default function Home() {
             <div>
               <Image 
                 src="/assets/cloud_folder.png" 
-                alt="Cloud Folder Icon" 
+                alt="Cloud Folder Icon - Intelligente Datei-Organisation" 
                 width={500} 
                 height={500}
                 className="w-full max-w-md mx-auto drop-shadow-[0_0_40px_rgba(59,130,246,0.3)] animate-float"
@@ -294,7 +301,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-2">
             <div className="size-8 rounded-lg overflow-hidden border border-white/10">
-              <Image src="/assets/logo_mark.png" alt="Logo" width={32} height={32} className="object-cover" />
+              <Image src="/assets/logo_mark.png" alt="CloudSorted Logo Mark" width={32} height={32} className="object-cover" />
             </div>
             <span className="text-lg font-bold text-white">CloudSorted</span>
           </div>
