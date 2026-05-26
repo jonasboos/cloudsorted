@@ -95,7 +95,7 @@ export default function OneDrivePage() {
                 <span className="bg-green-100 text-green-800 border-2 border-green-800 px-3 py-1 text-xs font-black uppercase tracking-wider">
                   Aktiv Verbunden
                 </span>
-                <h2 className="text-3xl font-black uppercase tracking-tighter mt-1">jonas.boos@outlook.com</h2>
+                <h2 className="text-3xl font-black uppercase tracking-tighter mt-1">demo.user@outlook.com</h2>
               </div>
             </div>
             <Button

@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export default function SettingsPage() {
-  const [name, setName] = useState("Jonas Boos");
-  const [email, setEmail] = useState("jonas@example.com");
+  const [name, setName] = useState("Demo User");
+  const [email, setEmail] = useState("demo@example.com");
   const [syncFrequency, setSyncFrequency] = useState("Stündlich");
   const [emailReports, setEmailReports] = useState(true);
 

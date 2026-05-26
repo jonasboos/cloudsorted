@@ -21,7 +21,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex items-center gap-2 mb-6 font-bold uppercase text-sm">
             <CheckCircle2 className="size-5 text-green-500 group-hover:text-green-400" />
-            <span>Verbunden (jonas@example.com)</span>
+            <span>Verbunden (demo@example.com)</span>
           </div>
           <Button className="w-full bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-14 font-black uppercase tracking-widest text-sm group-hover:bg-white group-hover:text-black group-hover:border-black group-hover:hover:bg-black group-hover:hover:text-white group-hover:hover:border-white">
             <Zap className="mr-2 size-5" /> Bereinigung starten
