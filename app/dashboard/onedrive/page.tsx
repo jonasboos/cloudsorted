@@ -76,22 +76,12 @@ export default function OneDrivePage() {
               </ul>
             </div>
 
-            {connecting ? (
-              <div className="border-4 border-black p-6 mb-8 text-center bg-gray-50">
-                <RefreshCw className="size-10 mx-auto mb-4 text-black animate-spin" />
-                <p className="font-black uppercase text-lg mb-1">
-                  {connectStep === 1 ? "Öffne Microsoft Login..." : "Autorisiere CloudSorted..."}
-                </p>
-                <p className="font-bold uppercase text-xs text-gray-500">Sichere SSL-Verbindung wird aufgebaut</p>
-              </div>
-            ) : (
-              <Button
-                onClick={startConnection}
-                className="bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-16 px-10 font-black uppercase tracking-widest text-sm flex items-center gap-3"
-              >
-                <Key className="size-5" /> OneDrive verbinden
-              </Button>
-            )}
+            <Button
+              onClick={startConnection}
+              className="bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-16 px-10 font-black uppercase tracking-widest text-sm flex items-center gap-3"
+            >
+              <Key className="size-5" /> OneDrive verbinden
+            </Button>
           </div>
         </div>
       ) : (
@@ -152,6 +142,21 @@ export default function OneDrivePage() {
               <p className="font-bold uppercase text-xs text-gray-500">
                 Automatische Bereinigungsregeln laufen stündlich und halten deinen Speicher sauber.
               </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {connecting && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="w-full max-w-md border-4 border-black p-8 bg-white relative shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] text-center animate-in zoom-in-95 duration-200">
+            <RefreshCw className="size-12 mx-auto mb-6 text-black animate-spin" />
+            <h2 className="text-2xl font-black uppercase tracking-tighter mb-2">OneDrive Verbindung</h2>
+            <p className="font-black uppercase text-sm text-gray-500 mb-6">
+              {connectStep === 1 ? "Öffne Microsoft Login..." : "Autorisiere CloudSorted..."}
+            </p>
+            <div className="bg-gray-50 border-4 border-black p-4 text-xs font-bold uppercase text-gray-400">
+              Sichere SSL-Verbindung wird aufgebaut
             </div>
           </div>
         </div>

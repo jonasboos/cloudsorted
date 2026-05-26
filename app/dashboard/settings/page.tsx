@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Save, User, ShieldAlert, Check, RefreshCw, AlertCircle } from "lucide-react";
+import { Save, User, ShieldAlert, Check, RefreshCw, AlertCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -55,7 +55,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-5xl">
       <div className="mb-16">
         <h1 className="text-[6vw] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-6">
           Einstellungen.
@@ -165,37 +165,50 @@ export default function SettingsPage() {
             Das Löschen deines Kontos ist endgültig. Alle deine Regeln und Zugriffsrechte werden sofort widerrufen.
           </p>
 
-          {!showConfirmDelete ? (
-            <Button
-              onClick={() => setShowConfirmDelete(true)}
-              className="bg-white text-red-600 hover:bg-red-600 hover:text-white border-4 border-red-600 rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs"
-            >
-              Konto löschen
-            </Button>
-          ) : (
-            <div className="border-4 border-red-600 p-6 bg-red-50 space-y-4">
-              <div className="flex items-start gap-3 text-red-800">
-                <AlertCircle className="size-5 shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-black uppercase text-sm">Bist du dir absolut sicher?</p>
-                  <p className="text-xs font-bold uppercase mt-1">
-                    Bitte tippe das Wort &quot;LÖSCHEN&quot; in das Feld unten ein, um fortzufahren.
-                  </p>
-                </div>
+          <Button
+            onClick={() => setShowConfirmDelete(true)}
+            className="bg-white text-red-600 hover:bg-red-600 hover:text-white border-4 border-red-600 rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs"
+          >
+            Konto löschen
+          </Button>
+        </div>
+
+        {showConfirmDelete && (
+          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+            <div className="w-full max-w-md border-4 border-red-600 p-8 bg-white relative shadow-[12px_12px_0px_0px_rgba(220,38,38,1)] animate-in zoom-in-95 duration-200">
+              <button
+                onClick={() => {
+                  setShowConfirmDelete(false);
+                  setDeleteConfirmationText("");
+                }}
+                className="absolute top-6 right-6 text-gray-500 hover:text-black transition-colors"
+              >
+                <X className="size-6" />
+              </button>
+              
+              <h2 className="text-2xl font-black uppercase tracking-tighter text-red-600 mb-6 flex items-center gap-2">
+                <ShieldAlert className="size-6 text-red-600" /> Konto löschen?
+              </h2>
+
+              <div className="bg-red-50 border-4 border-red-600 p-6 mb-6 space-y-2 text-red-800 font-bold uppercase text-xs">
+                <p className="font-black text-sm">Das Löschen deines Kontos ist endgültig!</p>
+                <p className="leading-relaxed">
+                  Alle deine Regeln und Zugriffsrechte werden sofort widerrufen. Bitte tippe das Wort <strong>LÖSCHEN</strong> ein.
+                </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="space-y-4">
                 <Input
                   value={deleteConfirmationText}
                   onChange={(e) => setDeleteConfirmationText(e.target.value)}
                   placeholder="LÖSCHEN"
-                  className="border-4 border-red-600 rounded-none h-12 px-4 font-black uppercase bg-white max-w-xs focus:ring-0 focus-visible:ring-0"
+                  className="border-4 border-red-600 rounded-none h-12 px-4 font-black uppercase bg-white w-full focus:ring-0 focus-visible:ring-0"
                 />
-                <div className="flex gap-2">
+                <div className="flex gap-4">
                   <Button
                     onClick={handleDeleteAccount}
                     disabled={deleteConfirmationText.toUpperCase() !== "LÖSCHEN"}
-                    className="bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:hover:bg-red-600 rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs"
+                    className="flex-1 bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:hover:bg-red-600 rounded-none h-12 font-black uppercase tracking-widest text-xs"
                   >
                     Bestätigen
                   </Button>
@@ -204,15 +217,15 @@ export default function SettingsPage() {
                       setShowConfirmDelete(false);
                       setDeleteConfirmationText("");
                     }}
-                    className="bg-white text-black hover:bg-gray-100 border-4 border-black rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs"
+                    className="flex-1 bg-white text-black hover:bg-gray-100 border-4 border-black rounded-none h-12 font-black uppercase tracking-widest text-xs"
                   >
                     Abbrechen
                   </Button>
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

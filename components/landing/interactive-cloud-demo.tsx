@@ -8,14 +8,12 @@ import {
   FileText,
   FolderTree,
   Loader2,
-  Sparkles,
   ChevronRight,
   ArrowRight,
   ShieldCheck,
   Zap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
 type Step = "connect" | "scan" | "propose" | "success";
@@ -54,7 +52,7 @@ export function InteractiveCloudDemo() {
   };
 
   return (
-    <div className="relative overflow-hidden bg-white border-4 border-black w-full max-w-5xl mx-auto min-h-[500px] flex flex-col group/demo">
+    <div className="relative overflow-hidden bg-white border-4 border-black w-full max-w-5xl mx-auto flex flex-col group/demo">
       <div className="relative z-10 border-b-4 border-black p-6 bg-white">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -81,7 +79,7 @@ export function InteractiveCloudDemo() {
         </div>
       </div>
 
-      <div className="relative z-10 flex-1 flex flex-col p-0 overflow-hidden bg-white">
+      <div className="relative z-10 h-[650px] md:h-[580px] flex flex-col p-0 overflow-hidden bg-white">
         <AnimatePresence mode="wait">
           {step === "connect" && (
             <motion.div 
@@ -89,11 +87,11 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="flex-1 flex flex-col items-center justify-center p-8 text-center"
+              className="flex-1 flex flex-col items-center justify-center p-8 text-center overflow-y-auto"
             >
               <div className="max-w-md space-y-6">
-                <h3 className="text-4xl font-black uppercase tracking-tighter">Select Source</h3>
-                <p className="text-gray-500 font-bold uppercase text-sm">Choose where your chaos lives right now.</p>
+                <h3 className="text-4xl font-black uppercase tracking-tighter">Quelle wählen</h3>
+                <p className="text-gray-500 font-bold uppercase text-xs">Wähle den Speicherort, an dem dein Chaos wohnt.</p>
                 
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <Button 
@@ -101,7 +99,12 @@ export function InteractiveCloudDemo() {
                     className={cn("h-32 flex-col gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "drive" && "bg-black text-white")}
                     onClick={() => setCloud("drive")}
                   >
-                    <Cloud className="size-8" />
+                    <svg className="size-8 group-hover:opacity-90" viewBox="0 0 24 24">
+                      <path fill="#EA4335" d="M12 5.04c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.68 14.97.6 12 .6 7.7.6 3.99 3.07 2.18 6.67l3.66 2.84C6.71 6.91 9.14 5.04 12 5.04z" />
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31l3.57 2.77c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    </svg>
                     <span className="font-black uppercase tracking-widest text-xs">Google Drive</span>
                   </Button>
                   <Button 
@@ -109,7 +112,12 @@ export function InteractiveCloudDemo() {
                     className={cn("h-32 flex-col gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "onedrive" && "bg-black text-white")}
                     onClick={() => setCloud("onedrive")}
                   >
-                    <ChevronRight className="size-8" />
+                    <svg className="size-8" viewBox="0 0 23 23">
+                      <rect x="0" y="0" width="10.5" height="10.5" fill="#F25022" />
+                      <rect x="11.5" y="0" width="10.5" height="10.5" fill="#7FBA00" />
+                      <rect x="0" y="11.5" width="10.5" height="10.5" fill="#00A4EF" />
+                      <rect x="11.5" y="11.5" width="10.5" height="10.5" fill="#FFB900" />
+                    </svg>
                     <span className="font-black uppercase tracking-widest text-xs">OneDrive</span>
                   </Button>
                 </div>
@@ -119,7 +127,7 @@ export function InteractiveCloudDemo() {
                   className="w-full h-16 mt-6 border-4 border-black rounded-none bg-white text-black hover:bg-black hover:text-white font-black uppercase tracking-widest text-sm transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={() => setStep("scan")}
                 >
-                  Start Analysis <ArrowRight className="ml-4 size-5 group-hover:translate-x-2 transition-transform" />
+                  Scan starten <ArrowRight className="ml-4 size-5 group-hover:translate-x-2 transition-transform" />
                 </Button>
               </div>
             </motion.div>
@@ -131,47 +139,47 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              className="flex-1 flex flex-col p-8 lg:p-16"
+              className="flex-1 flex flex-col p-6 lg:p-8 overflow-y-auto min-h-0"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center flex-1">
-                <div className="space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center flex-1">
+                <div className="space-y-6">
                   <div className="space-y-4">
                     <div className="inline-flex items-center px-3 py-1 border-2 border-black font-black uppercase text-xs">
-                      <Loader2 className="size-4 mr-2 animate-spin" /> Deep Scan Active
+                      <Loader2 className="size-4 mr-2 animate-spin" /> Deep-Scan Aktiv
                     </div>
-                    <h3 className="text-5xl font-black uppercase tracking-tighter leading-none">Analyzing<br />Metadata.</h3>
-                    <p className="text-gray-500 font-bold uppercase text-sm">Finding patterns in the chaos.</p>
+                    <h3 className="text-4xl font-black uppercase tracking-tighter leading-none">Muster erkennen.</h3>
+                    <p className="text-gray-500 font-bold uppercase text-xs">Der Agent ordnet das Chaos im Hintergrund.</p>
                   </div>
                   
                   <div className="space-y-4">
                     <div className="flex justify-between items-end border-b-4 border-black pb-2">
-                      <span className="text-sm font-black uppercase tracking-widest">Progress</span>
+                      <span className="text-xs font-black uppercase tracking-widest">Fortschritt</span>
                       <span className="text-3xl font-black">{progress}%</span>
                     </div>
                     
                     <div className="grid grid-cols-3 gap-4">
-                      <div className="p-4 border-4 border-black text-center">
-                        <p className="text-xs font-bold uppercase text-gray-500 mb-1 tracking-widest">Files</p>
-                        <p className="text-3xl font-black">{Math.floor(progress * 1.4)}</p>
+                      <div className="p-4 border-4 border-black text-center bg-white">
+                        <p className="text-[10px] font-bold uppercase text-gray-500 mb-1 tracking-widest">Dateien</p>
+                        <p className="text-2xl font-black">{Math.floor(progress * 1.4)}</p>
                       </div>
-                      <div className="p-4 border-4 border-black text-center">
-                        <p className="text-xs font-bold uppercase text-gray-500 mb-1 tracking-widest">Clusters</p>
-                        <p className="text-3xl font-black">{Math.floor(progress * 0.12)}</p>
+                      <div className="p-4 border-4 border-black text-center bg-white">
+                        <p className="text-[10px] font-bold uppercase text-gray-500 mb-1 tracking-widest">Cluster</p>
+                        <p className="text-2xl font-black">{Math.floor(progress * 0.12)}</p>
                       </div>
-                      <div className="p-4 border-4 border-black text-center">
-                        <p className="text-xs font-bold uppercase text-gray-500 mb-1 tracking-widest">Confidence</p>
-                        <p className="text-3xl font-black">{Math.min(98, 40 + Math.floor(progress * 0.58))}%</p>
+                      <div className="p-4 border-4 border-black text-center bg-white">
+                        <p className="text-[10px] font-bold uppercase text-gray-500 mb-1 tracking-widest">Sicherheit</p>
+                        <p className="text-2xl font-black">{Math.min(98, 40 + Math.floor(progress * 0.58))}%</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="relative">
-                  <div className="bg-white border-4 border-black overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500">
-                     <div className="bg-black text-white p-4 flex items-center border-b-4 border-black font-black uppercase text-xs tracking-widest">
+                  <div className="bg-white border-4 border-black overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[340px] flex flex-col">
+                     <div className="bg-black text-white p-4 flex items-center border-b-4 border-black font-black uppercase text-xs tracking-widest shrink-0">
                         cloud_root / messy_files
                      </div>
-                     <div className="p-6 space-y-4 font-mono font-bold text-sm">
+                     <div className="p-6 space-y-4 font-mono font-bold text-xs overflow-y-auto flex-1 bg-white">
                         {messyFiles.map((f, i) => (
                           <motion.div 
                             key={f.name}
@@ -180,15 +188,15 @@ export function InteractiveCloudDemo() {
                             transition={{ delay: i * 0.2 }}
                             className="flex items-center gap-4 text-black border-2 border-transparent hover:border-black p-2 transition-colors"
                           >
-                            <FileText className="size-5" />
-                            <span>{f.name}</span>
-                            <span className="ml-auto text-gray-400">{f.size}</span>
+                            <FileText className="size-4 shrink-0" />
+                            <span className="truncate">{f.name}</span>
+                            <span className="ml-auto text-gray-400 shrink-0">{f.size}</span>
                           </motion.div>
                         ))}
-                        <div className="h-32 flex items-center justify-center border-t-4 border-dashed border-gray-300 mt-6">
-                           <div className="flex flex-col items-center gap-4">
-                              <Loader2 className="size-8 animate-spin" />
-                              <span className="text-xs font-black uppercase tracking-widest animate-pulse">Clustering...</span>
+                        <div className="h-20 flex items-center justify-center border-t-4 border-dashed border-gray-300 mt-6">
+                           <div className="flex flex-col items-center gap-2">
+                              <Loader2 className="size-5 animate-spin" />
+                              <span className="text-[10px] font-black uppercase tracking-widest animate-pulse">Gruppierung läuft...</span>
                            </div>
                         </div>
                      </div>
@@ -204,57 +212,57 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex-1 flex flex-col p-8 lg:p-16"
+              className="flex-1 flex flex-col p-6 lg:p-8 overflow-y-auto min-h-0"
             >
-              <div className="flex flex-col lg:flex-row gap-12 flex-1">
-                <div className="lg:w-1/3 space-y-8">
-                  <h3 className="text-5xl font-black uppercase tracking-tighter leading-none">Structure<br />Proposed.</h3>
-                  <p className="text-sm font-bold text-gray-500 uppercase leading-relaxed">
-                    Agent found 14 projects. Here is your new hierarchy.
+              <div className="flex flex-col lg:flex-row gap-8 flex-1">
+                <div className="lg:w-1/3 space-y-6">
+                  <h3 className="text-4xl font-black uppercase tracking-tighter leading-none">Struktur bereit.</h3>
+                  <p className="text-xs font-bold text-gray-500 uppercase leading-relaxed">
+                    Agent hat 14 Projekte erkannt. Hier ist deine neue Hierarchie.
                   </p>
                   
-                  <div className="space-y-4 py-6 border-y-4 border-black">
-                     <div className="flex items-center gap-3 font-black uppercase text-sm">
-                        <ShieldCheck className="size-6 text-green-500" />
-                        <span>0 Duplicates</span>
+                  <div className="space-y-3 py-4 border-y-4 border-black">
+                     <div className="flex items-center gap-3 font-black uppercase text-xs">
+                        <ShieldCheck className="size-5 text-green-500" />
+                        <span>0 Duplikate gefunden</span>
                      </div>
-                     <div className="flex items-center gap-3 font-black uppercase text-sm">
-                        <Zap className="size-6" />
-                        <span>32 Renames</span>
+                     <div className="flex items-center gap-3 font-black uppercase text-xs">
+                        <Zap className="size-5" />
+                        <span>32 Umbenennungen vorgeschlagen</span>
                      </div>
                   </div>
                   
-                  <div className="pt-4 space-y-4">
+                  <div className="pt-2 space-y-4">
                     <Button 
-                      className="w-full h-16 border-4 border-black rounded-none bg-black text-white hover:bg-white hover:text-black font-black uppercase tracking-widest text-sm transition-all"
+                      className="w-full h-14 border-4 border-black rounded-none bg-black text-white hover:bg-white hover:text-black font-black uppercase tracking-widest text-xs transition-all"
                       onClick={() => setStep("success")}
                     >
-                      Apply Changes
+                      Änderungen anwenden
                     </Button>
-                    <Button variant="outline" className="w-full h-16 border-4 border-black rounded-none bg-white text-black hover:bg-black hover:text-white font-black uppercase tracking-widest text-sm transition-all" onClick={reset}>
-                      Cancel
+                    <Button variant="outline" className="w-full h-14 border-4 border-black rounded-none bg-white text-black hover:bg-black hover:text-white font-black uppercase tracking-widest text-xs transition-all" onClick={reset}>
+                      Abbrechen
                     </Button>
                   </div>
                 </div>
                 
-                <div className="flex-1 bg-white border-4 border-black p-8 font-mono font-bold text-sm overflow-hidden relative">
+                <div className="flex-1 bg-white border-4 border-black p-6 font-mono font-bold text-xs overflow-y-auto max-h-[340px] relative">
                   <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-                    <FolderTree className="size-64" />
+                    <FolderTree className="size-48" />
                   </div>
                   
-                  <div className="space-y-2 relative z-10">
+                  <div className="space-y-1 relative z-10">
                     {[
-                      { path: "Clients", type: "folder", root: true },
-                      { path: "Katherine-Smith", type: "folder", indent: 1 },
-                      { path: "Project-Relaunch", type: "folder", indent: 2 },
+                      { path: "Kunden", type: "folder", root: true },
+                      { path: "Katharina-Schmidt", type: "folder", indent: 1 },
+                      { path: "Projekt-Relaunch", type: "folder", indent: 2 },
                       { path: "01-Briefing", type: "folder", indent: 3 },
-                      { path: "briefing-notes-2024.docx", type: "file", indent: 4, isNew: true },
+                      { path: "briefing-notizen-2025.docx", type: "file", indent: 4, isNew: true },
                       { path: "02-Assets", type: "folder", indent: 3 },
-                      { path: "main-logo-v2.png", type: "file", indent: 4, isNew: true },
-                      { path: "Invoices", type: "folder", indent: 2 },
-                      { path: "INV_2024_01.pdf", type: "file", indent: 3, isNew: true },
-                      { path: "Archive", type: "folder", root: true },
-                      { path: "Legacy", type: "folder", indent: 1 },
+                      { path: "haupt-logo-v2.png", type: "file", indent: 4, isNew: true },
+                      { path: "Rechnungen", type: "folder", indent: 2 },
+                      { path: "RE_2025_01.pdf", type: "file", indent: 3, isNew: true },
+                      { path: "Archiv", type: "folder", root: true },
+                      { path: "Verlauf", type: "folder", indent: 1 },
                     ].map((item, i) => (
                       <motion.div
                          key={i}
@@ -263,23 +271,23 @@ export function InteractiveCloudDemo() {
                          transition={{ delay: i * 0.05 }}
                          className={cn(
                            "flex items-center py-2 px-3 hover:bg-black hover:text-white transition-colors cursor-default",
-                           item.root && "mt-6 border-b-2 border-black pb-1"
+                           item.root && "mt-4 border-b-2 border-black pb-1"
                          )}
-                         style={{ paddingLeft: `${(item.indent || 0) * 2 + 1}rem` }}
+                         style={{ paddingLeft: `${(item.indent || 0) * 1.5 + 0.5}rem` }}
                       >
-                         <span className="mr-3 opacity-30">
+                         <span className="mr-2 opacity-30 text-[10px]">
                            {item.indent ? '└' : ''}
                          </span>
                          {item.type === 'folder' ? (
-                           <FolderTree className="size-5 mr-3" />
+                           <FolderTree className="size-4 mr-2" />
                          ) : (
-                           <FileText className="size-5 mr-3 opacity-50" />
+                           <FileText className="size-4 mr-2 opacity-50" />
                          )}
-                         <span className={cn(item.isNew && "text-green-500")}>
+                         <span className={cn(item.isNew && "text-green-600 truncate")}>
                            {item.path}
                          </span>
                          {item.isNew && (
-                           <span className="ml-auto text-[10px] bg-black text-white px-2 py-1 uppercase tracking-widest group-hover:bg-white group-hover:text-black">Proposed</span>
+                           <span className="ml-auto text-[9px] bg-black text-white px-2 py-0.5 uppercase tracking-widest">Neu</span>
                          )}
                       </motion.div>
                     ))}
@@ -294,36 +302,36 @@ export function InteractiveCloudDemo() {
               key="success"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex-1 flex flex-col items-center justify-center p-8 lg:p-16 text-center"
+              className="flex-1 flex flex-col items-center justify-center p-6 lg:p-8 text-center overflow-y-auto"
             >
-               <div className="size-32 border-4 border-black flex items-center justify-center mb-12 relative bg-black text-white rotate-6">
-                  <CheckCircle2 className="size-16" />
+               <div className="size-24 border-4 border-black flex items-center justify-center mb-8 relative bg-black text-white rotate-6 shrink-0">
+                  <CheckCircle2 className="size-12" />
                </div>
                
-               <h3 className="text-6xl font-black uppercase tracking-tighter mb-6">Sorted.</h3>
-               <p className="text-gray-500 font-bold uppercase text-sm max-w-md mx-auto mb-12 leading-relaxed">
-                 Files renamed. Folders structured. 100% clean cloud.
+               <h3 className="text-5xl font-black uppercase tracking-tighter mb-4">Aufgeräumt.</h3>
+               <p className="text-gray-500 font-bold uppercase text-xs max-w-md mx-auto mb-8 leading-relaxed">
+                 Dateien umbenannt. Ordner strukturiert. Deine Cloud ist sauber.
                </p>
                
-               <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md">
-                  <Button className="flex-1 h-16 border-4 border-black rounded-none bg-black text-white hover:bg-white hover:text-black font-black uppercase tracking-widest text-sm transition-all" onClick={reset}>
-                    Run Again
+               <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md shrink-0">
+                  <Button className="flex-1 h-14 border-4 border-black rounded-none bg-black text-white hover:bg-white hover:text-black font-black uppercase tracking-widest text-xs transition-all" onClick={reset}>
+                    Nochmal starten
                   </Button>
                </div>
                
-               <div className="mt-16 pt-12 border-t-4 border-black w-full max-w-2xl">
-                  <div className="grid grid-cols-3 gap-8 text-center border-x-4 border-black p-4">
+               <div className="mt-8 pt-6 border-t-4 border-black w-full max-w-xl shrink-0">
+                  <div className="grid grid-cols-3 gap-6 text-center border-x-4 border-black p-3 bg-white">
                      <div>
-                        <p className="text-4xl font-black">45</p>
-                        <p className="text-[10px] font-bold uppercase text-gray-500 mt-2 tracking-widest">Moved</p>
+                        <p className="text-3xl font-black">45</p>
+                        <p className="text-[9px] font-bold uppercase text-gray-500 mt-1 tracking-widest">Verschoben</p>
                      </div>
-                     <div className="border-x-4 border-black px-4">
-                        <p className="text-4xl font-black">12</p>
-                        <p className="text-[10px] font-bold uppercase text-gray-500 mt-2 tracking-widest">Created</p>
+                     <div className="border-x-4 border-black px-2">
+                        <p className="text-3xl font-black">12</p>
+                        <p className="text-[9px] font-bold uppercase text-gray-500 mt-1 tracking-widest">Erstellt</p>
                      </div>
                      <div>
-                        <p className="text-4xl font-black">1.2s</p>
-                        <p className="text-[10px] font-bold uppercase text-gray-500 mt-2 tracking-widest">Time</p>
+                        <p className="text-3xl font-black">1.2s</p>
+                        <p className="text-[9px] font-bold uppercase text-gray-500 mt-1 tracking-widest">Dauer</p>
                      </div>
                   </div>
                </div>
@@ -334,7 +342,7 @@ export function InteractiveCloudDemo() {
 
       <div className="p-4 border-t-4 border-black bg-white flex items-center justify-center gap-4 font-black text-xs uppercase tracking-widest relative z-10">
         <ShieldCheck className="size-5" />
-        Safe Sandbox • No Real Modifications
+        Safe Sandbox • Keine echten Änderungen
       </div>
     </div>
   );
