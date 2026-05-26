@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Cloud, Trash2, CheckCircle, RefreshCw, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Trash2, CheckCircle, RefreshCw, AlertTriangle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface FlaggedFile {
@@ -60,54 +60,54 @@ export default function DrivePage() {
 
   return (
     <div className="max-w-5xl">
-      <div className="mb-16">
-        <h1 className="text-[6vw] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-6">
+      <div className="mb-10 sm:mb-16">
+        <h1 className="text-[clamp(2.75rem,15vw,4.5rem)] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-4 sm:mb-6">
           Google Drive.
         </h1>
-        <p className="text-xl font-bold uppercase max-w-2xl text-gray-500">
+        <p className="text-base sm:text-xl font-bold uppercase max-w-2xl text-gray-500">
           Analysiere und bereinige deinen Google Drive Cloud-Speicher in Echtzeit.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <div className="border-4 border-black p-8 bg-white text-black">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-16">
+        <div className="border-4 border-black p-5 sm:p-8 bg-white text-black">
           <p className="font-bold uppercase text-xs text-gray-500 mb-2">Speicherbelegung</p>
-          <p className="text-4xl font-black uppercase tracking-tight">24.5 GB</p>
+          <p className="text-3xl sm:text-4xl font-black uppercase tracking-tight">24.5 GB</p>
           <p className="text-xs font-bold uppercase text-gray-400 mt-1">von 15 GB Gratis-Speicherplatz</p>
         </div>
 
-        <div className="border-4 border-black p-8 bg-white text-black">
+        <div className="border-4 border-black p-5 sm:p-8 bg-white text-black">
           <p className="font-bold uppercase text-xs text-gray-500 mb-2">Gescannt</p>
-          <p className="text-4xl font-black uppercase tracking-tight">{totalFiles}</p>
+          <p className="text-3xl sm:text-4xl font-black uppercase tracking-tight">{totalFiles}</p>
           <p className="text-xs font-bold uppercase text-gray-400 mt-1">Dateien erfolgreich gescannt</p>
         </div>
 
-        <div className="border-4 border-black p-8 bg-white text-black">
+        <div className="border-4 border-black p-5 sm:p-8 bg-white text-black">
           <p className="font-bold uppercase text-xs text-gray-500 mb-2">Geflaggt</p>
-          <p className="text-4xl font-black uppercase tracking-tight">{totalFlaggedSize}</p>
+          <p className="text-3xl sm:text-4xl font-black uppercase tracking-tight">{totalFlaggedSize}</p>
           <p className="text-xs font-bold uppercase text-red-500 mt-1">{files.length} Dateien benötigen Aufmerksamkeit</p>
         </div>
       </div>
 
-      <div className="border-4 border-black p-8 mb-16 bg-white">
-        <h2 className="text-3xl font-black uppercase tracking-tighter mb-6">Speicheraufteilung</h2>
+      <div className="border-4 border-black p-5 sm:p-8 mb-10 sm:mb-16 bg-white">
+        <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-6">Speicheraufteilung</h2>
         
         <div className="h-16 border-4 border-black flex mb-6 overflow-hidden">
-          <div className="bg-black text-white flex items-center justify-center font-bold text-xs uppercase" style={{ width: "65%" }}>
-            Dokumente (65%)
+          <div className="bg-black text-white flex items-center justify-center font-bold text-[10px] sm:text-xs uppercase" style={{ width: "65%" }}>
+            <span className="hidden sm:inline">Dokumente (65%)</span><span className="sm:hidden">65%</span>
           </div>
-          <div className="bg-gray-400 text-black flex items-center justify-center font-bold text-xs uppercase" style={{ width: "20%" }}>
-            Bilder (20%)
+          <div className="bg-gray-400 text-black flex items-center justify-center font-bold text-[10px] sm:text-xs uppercase" style={{ width: "20%" }}>
+            <span className="hidden sm:inline">Bilder (20%)</span><span className="sm:hidden">20%</span>
           </div>
-          <div className="bg-gray-200 text-black flex items-center justify-center font-bold text-xs uppercase" style={{ width: "10%" }}>
-            Duplikate (10%)
+          <div className="bg-gray-200 text-black flex items-center justify-center font-bold text-[10px] sm:text-xs uppercase" style={{ width: "10%" }}>
+            <span className="hidden sm:inline">Duplikate (10%)</span><span className="sm:hidden">10%</span>
           </div>
-          <div className="bg-white text-black flex items-center justify-center font-bold text-xs uppercase" style={{ width: "5%" }}>
+          <div className="bg-white text-black flex items-center justify-center font-bold text-[10px] sm:text-xs uppercase" style={{ width: "5%" }}>
             5%
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-6 text-sm font-bold uppercase">
+        <div className="flex flex-wrap gap-x-5 gap-y-3 text-xs sm:text-sm font-bold uppercase">
           <div className="flex items-center gap-2">
             <span className="size-4 bg-black border border-black inline-block"></span>
             <span>Dokumente (15.9 GB)</span>
@@ -127,12 +127,12 @@ export default function DrivePage() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
-        <div className="md:col-span-2 border-4 border-black p-8 bg-white">
-          <h2 className="text-3xl font-black uppercase tracking-tighter mb-8">Geflaggte Dateien</h2>
+      <div className="grid md:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-16">
+        <div className="md:col-span-2 border-4 border-black p-5 sm:p-8 bg-white">
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-6 sm:mb-8">Geflaggte Dateien</h2>
 
           {files.length === 0 ? (
-            <div className="border-4 border-dashed border-black p-12 text-center">
+            <div className="border-4 border-dashed border-black p-6 sm:p-12 text-center">
               <ShieldCheck className="size-16 mx-auto mb-6 text-black" />
               <p className="font-black uppercase text-xl mb-2">Alles sauber!</p>
               <p className="font-bold text-sm uppercase text-gray-500">Keine Duplikate oder veraltete Dateien in Google Drive gefunden.</p>
@@ -140,13 +140,13 @@ export default function DrivePage() {
           ) : (
             <div className="divide-y-4 divide-black border-t-4 border-black">
               {files.map((file) => (
-                <div key={file.id} className="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
+                <div key={file.id} className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="min-w-0">
                     <span className="bg-black text-white px-2 py-1 text-xs font-bold uppercase tracking-wider mb-2 inline-block">
                       {file.type}
                     </span>
                     <h3 className="font-black text-lg uppercase tracking-tight break-all">{file.name}</h3>
-                    <div className="flex items-center gap-4 mt-2 font-bold uppercase text-xs text-gray-500">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 font-bold uppercase text-xs text-gray-500">
                       <span>Größe: {file.size}</span>
                       <span className="text-red-500 flex items-center gap-1">
                         <AlertTriangle className="size-3" /> {file.reason}
@@ -155,7 +155,7 @@ export default function DrivePage() {
                   </div>
                   <Button
                     onClick={() => deleteFile(file.id)}
-                    className="bg-white text-black hover:bg-black hover:text-white border-4 border-black rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs flex items-center gap-2"
+                    className="w-full sm:w-auto bg-white text-black hover:bg-black hover:text-white border-4 border-black rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs flex items-center gap-2"
                   >
                     <Trash2 className="size-4" /> Löschen
                   </Button>
@@ -165,9 +165,9 @@ export default function DrivePage() {
           )}
         </div>
 
-        <div className="border-4 border-black p-8 bg-white flex flex-col justify-between">
+        <div className="border-4 border-black p-5 sm:p-8 bg-white flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-black uppercase tracking-tighter mb-6">Drive-Scan</h2>
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-6">Drive-Scan</h2>
             <p className="font-bold uppercase text-sm text-gray-500 mb-8">
               Lass den intelligenten CloudSorted Agenten nach versteckten Duplikaten und ungenutzten Dateien suchen.
             </p>

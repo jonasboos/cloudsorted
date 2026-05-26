@@ -25,11 +25,11 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-black flex flex-col justify-center items-center p-6 selection:bg-black selection:text-white relative">
+    <main className="min-h-screen bg-white text-black flex flex-col justify-center items-center p-4 sm:p-6 selection:bg-black selection:text-white relative">
       
-      <div className="absolute top-6 left-6">
+      <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-3xl font-black tracking-tighter uppercase">
+          <span className="text-2xl sm:text-3xl font-black tracking-tighter uppercase">
             CloudSorted
           </span>
         </Link>
@@ -39,14 +39,14 @@ export default function LoginPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-md mt-16"
+        className="w-full max-w-md mt-20 sm:mt-16"
       >
-        <h1 className="text-5xl font-black uppercase tracking-tighter mb-12">
+        <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter mb-8 sm:mb-12">
           Einloggen.
         </h1>
 
         <div className="space-y-4">
-          <Link href="/dashboard" className="flex items-center justify-center gap-3 w-full border-4 border-black p-4 font-bold uppercase hover:bg-black hover:text-white transition-colors group text-sm">
+          <Link href="/dashboard" className="flex items-center justify-center gap-3 w-full border-4 border-black p-4 font-bold uppercase hover:bg-black hover:text-white transition-colors group text-xs sm:text-sm">
             <svg className="size-5 shrink-0" viewBox="0 0 24 24">
               <path fill="#EA4335" d="M12 5.04c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.68 14.97.6 12 .6 7.7.6 3.99 3.07 2.18 6.67l3.66 2.84C6.71 6.91 9.14 5.04 12 5.04z" />
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31l3.57 2.77c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -56,7 +56,7 @@ export default function LoginPage() {
             Mit Google fortfahren
           </Link>
           
-          <Link href="/dashboard" className="flex items-center justify-center gap-3 w-full border-4 border-black p-4 font-bold uppercase hover:bg-black hover:text-white transition-colors group text-sm">
+          <Link href="/dashboard" className="flex items-center justify-center gap-3 w-full border-4 border-black p-4 font-bold uppercase hover:bg-black hover:text-white transition-colors group text-xs sm:text-sm">
             <svg className="size-5 shrink-0" viewBox="0 0 23 23">
               <rect x="0" y="0" width="10.5" height="10.5" fill="#F25022" />
               <rect x="11.5" y="0" width="10.5" height="10.5" fill="#7FBA00" />
@@ -120,7 +120,7 @@ export default function LoginPage() {
       {/* Forgot Password Popup Modal */}
       {showForgotModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="w-full max-w-md border-4 border-black p-8 bg-white relative shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] animate-in zoom-in-95 duration-200">
+          <div className="max-h-[90vh] w-full max-w-md overflow-y-auto border-4 border-black p-5 sm:p-8 bg-white relative shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] animate-in zoom-in-95 duration-200">
             <button
               onClick={() => {
                 setShowForgotModal(false);
@@ -132,7 +132,7 @@ export default function LoginPage() {
               <X className="size-6" />
             </button>
             
-            <h2 className="text-2xl font-black uppercase tracking-tighter mb-6 flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tighter mb-6 flex items-center gap-2 pr-10">
               <Mail className="size-6" /> Passwort vergessen?
             </h2>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Trash2, ToggleLeft, ToggleRight, ArrowRight, Save, X } from "lucide-react";
+import { Plus, Trash2, ToggleLeft, ToggleRight, Save, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -89,20 +89,20 @@ export default function RulesPage() {
 
   return (
     <div className="max-w-5xl">
-      <div className="mb-16">
-        <h1 className="text-[6vw] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-6">
+      <div className="mb-10 sm:mb-16">
+        <h1 className="text-[clamp(2.75rem,15vw,4.5rem)] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-4 sm:mb-6">
           Regeln.
         </h1>
-        <p className="text-xl font-bold uppercase max-w-2xl text-gray-500">
+        <p className="text-base sm:text-xl font-bold uppercase max-w-2xl text-gray-500">
           Regeln erstellen, aktivieren und verwalten für vollautomatische Datei-Sortierung.
         </p>
       </div>
 
-      <div className="mb-16">
-        <h2 className="text-3xl font-black uppercase tracking-tighter mb-8">Automatisierungs-Pipeline</h2>
+      <div className="mb-10 sm:mb-16">
+        <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-6 sm:mb-8">Automatisierungs-Pipeline</h2>
         
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="border-4 border-black p-8 bg-white flex flex-col justify-between min-h-40">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
+          <div className="border-4 border-black p-5 sm:p-8 bg-white flex flex-col justify-between min-h-40">
             <div>
               <span className="font-black text-xs uppercase text-gray-400 block mb-2">Schritt 1 • Auslöser</span>
               <h3 className="font-black uppercase text-2xl leading-none">Neue Datei</h3>
@@ -112,7 +112,7 @@ export default function RulesPage() {
             </div>
           </div>
           
-          <div className="border-4 border-black p-8 bg-black text-white flex flex-col justify-between min-h-40">
+          <div className="border-4 border-black p-5 sm:p-8 bg-black text-white flex flex-col justify-between min-h-40">
             <div>
               <span className="font-black text-xs text-gray-400 block mb-2 uppercase">Schritt 2 • Verarbeitung</span>
               <h3 className="font-black uppercase text-2xl leading-none text-white">Regel-Prüfung</h3>
@@ -122,7 +122,7 @@ export default function RulesPage() {
             </div>
           </div>
 
-          <div className="border-4 border-black p-8 bg-white flex flex-col justify-between min-h-40">
+          <div className="border-4 border-black p-5 sm:p-8 bg-white flex flex-col justify-between min-h-40">
             <div>
               <span className="font-black text-xs uppercase text-gray-400 block mb-2">Schritt 3 • Ergebnis</span>
               <h3 className="font-black uppercase text-2xl leading-none">Sortierung</h3>
@@ -136,7 +136,7 @@ export default function RulesPage() {
 
       {showAddForm && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="w-full max-w-xl border-4 border-black p-8 bg-white relative shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] animate-in zoom-in-95 duration-200">
+          <div className="max-h-[90vh] w-full max-w-xl overflow-y-auto border-4 border-black p-5 sm:p-8 bg-white relative shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setShowAddForm(false)}
               className="absolute top-6 right-6 text-gray-500 hover:text-black transition-colors"
@@ -144,7 +144,7 @@ export default function RulesPage() {
               <X className="size-6" />
             </button>
             
-            <h2 className="text-3xl font-black uppercase tracking-tighter mb-8">Regel hinzufügen</h2>
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-8 pr-10">Regel hinzufügen</h2>
             
             <form onSubmit={handleAddRule} className="space-y-6">
               <div>
@@ -207,13 +207,13 @@ export default function RulesPage() {
         </div>
       )}
 
-      <div className="border-4 border-black p-8 bg-white">
+      <div className="border-4 border-black p-5 sm:p-8 bg-white">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <h2 className="text-3xl font-black uppercase tracking-tighter">Aktive Regeln</h2>
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter">Aktive Regeln</h2>
           {!showAddForm && (
             <Button
               onClick={() => setShowAddForm(true)}
-              className="bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs flex items-center gap-2"
+              className="w-full sm:w-auto bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs flex items-center gap-2"
             >
               <Plus className="size-4" /> Neue Regel
             </Button>
@@ -228,12 +228,12 @@ export default function RulesPage() {
         ) : (
           <div className="divide-y-4 divide-black border-t-4 border-black">
             {rules.map((rule) => (
-              <div key={rule.id} className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="font-black text-xl uppercase tracking-tight">{rule.name}</h3>
+              <div key={rule.id} className="py-5 sm:py-6 flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                    <h3 className="font-black text-lg sm:text-xl uppercase tracking-tight break-words">{rule.name}</h3>
                     <span
-                      className={`px-2 py-1 text-xs font-black uppercase border-2 ${
+                      className={`w-fit px-2 py-1 text-xs font-black uppercase border-2 ${
                         rule.active
                           ? "bg-green-100 text-green-800 border-green-800"
                           : "bg-gray-100 text-gray-800 border-gray-400"
@@ -243,7 +243,7 @@ export default function RulesPage() {
                     </span>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-2 text-sm font-bold uppercase mt-4">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-2 text-xs sm:text-sm font-bold uppercase mt-4">
                     <div>
                       <span className="text-gray-500 block text-xs">Bedingung:</span>
                       <span>{rule.trigger}</span>
@@ -257,7 +257,7 @@ export default function RulesPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between gap-4 sm:justify-start">
                   <button
                     onClick={() => toggleRule(rule.id)}
                     className="flex items-center gap-1 font-black uppercase text-xs hover:text-black transition-colors"

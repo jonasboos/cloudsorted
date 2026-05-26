@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Save, User, ShieldAlert, Check, RefreshCw, AlertCircle, X } from "lucide-react";
+import { Save, User, ShieldAlert, Check, RefreshCw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -38,9 +38,9 @@ export default function SettingsPage() {
 
   if (accountDeleted) {
     return (
-      <div className="max-w-2xl border-4 border-black p-8 sm:p-12 text-center bg-white my-12">
+      <div className="max-w-2xl border-4 border-black p-5 sm:p-12 text-center bg-white my-6 sm:my-12">
         <ShieldAlert className="size-20 mx-auto text-red-600 mb-6" />
-        <h1 className="text-3xl font-black uppercase tracking-tighter mb-4">Konto gelöscht</h1>
+        <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter mb-4">Konto gelöscht</h1>
         <p className="font-bold uppercase text-sm text-gray-500 mb-8">
           Dein Account wurde erfolgreich aus dem System entfernt. Alle API-Verbindungen wurden getrennt.
         </p>
@@ -56,18 +56,18 @@ export default function SettingsPage() {
 
   return (
     <div className="max-w-5xl">
-      <div className="mb-16">
-        <h1 className="text-[6vw] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-6">
+      <div className="mb-10 sm:mb-16">
+        <h1 className="text-[clamp(2.75rem,15vw,4.5rem)] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-4 sm:mb-6">
           Einstellungen.
         </h1>
-        <p className="text-xl font-bold uppercase max-w-2xl text-gray-500">
+        <p className="text-base sm:text-xl font-bold uppercase max-w-2xl text-gray-500">
           Verwalte deine Profileinstellungen und Automatisierungs-Intervalle.
         </p>
       </div>
 
-      <div className="grid gap-12">
-        <div className="border-4 border-black p-8 bg-white">
-          <h2 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center gap-2">
+      <div className="grid gap-8 sm:gap-12">
+        <div className="border-4 border-black p-5 sm:p-8 bg-white">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tighter mb-8 flex items-center gap-2">
             <User className="size-6" /> Profileinstellungen
           </h2>
 
@@ -97,13 +97,13 @@ export default function SettingsPage() {
 
             <div>
               <label className="block text-xs font-black uppercase mb-2">Bereinigungs-Intervall</label>
-              <div className="grid grid-cols-3 border-4 border-black overflow-hidden text-center font-black uppercase text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 border-4 border-black overflow-hidden text-center font-black uppercase text-xs">
                 {["Manuell", "Stündlich", "Täglich"].map((freq) => (
                   <button
                     key={freq}
                     type="button"
                     onClick={() => setSyncFrequency(freq)}
-                    className={`py-4 transition-colors border-r-4 border-black last:border-r-0 ${
+                    className={`py-4 transition-colors border-b-4 border-black last:border-b-0 sm:border-b-0 sm:border-r-4 sm:last:border-r-0 ${
                       syncFrequency === freq ? "bg-black text-white" : "bg-white text-black hover:bg-gray-100"
                     }`}
                   >
@@ -113,7 +113,7 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 py-2">
+            <div className="flex items-start gap-4 py-2">
               <button
                 type="button"
                 onClick={() => setEmailReports(!emailReports)}
@@ -131,11 +131,11 @@ export default function SettingsPage() {
               </label>
             </div>
 
-            <div className="flex items-center gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-4">
               <Button
                 type="submit"
                 disabled={saving}
-                className="bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-14 px-8 font-black uppercase tracking-widest text-sm flex items-center gap-2"
+                className="w-full sm:w-auto bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-14 px-8 font-black uppercase tracking-widest text-sm flex items-center gap-2"
               >
                 {saving ? (
                   <>
@@ -157,8 +157,8 @@ export default function SettingsPage() {
           </form>
         </div>
 
-        <div className="border-4 border-red-600 p-8 bg-white">
-          <h2 className="text-2xl font-black uppercase tracking-tighter text-red-600 mb-4 flex items-center gap-2">
+        <div className="border-4 border-red-600 p-5 sm:p-8 bg-white">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tighter text-red-600 mb-4 flex items-center gap-2">
             <ShieldAlert className="size-6 text-red-600" /> Gefahrenbereich
           </h2>
           <p className="font-bold uppercase text-xs text-gray-500 mb-8 max-w-xl">
@@ -167,7 +167,7 @@ export default function SettingsPage() {
 
           <Button
             onClick={() => setShowConfirmDelete(true)}
-            className="bg-white text-red-600 hover:bg-red-600 hover:text-white border-4 border-red-600 rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs"
+            className="w-full sm:w-auto bg-white text-red-600 hover:bg-red-600 hover:text-white border-4 border-red-600 rounded-none h-12 px-6 font-black uppercase tracking-widest text-xs"
           >
             Konto löschen
           </Button>
@@ -175,7 +175,7 @@ export default function SettingsPage() {
 
         {showConfirmDelete && (
           <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-            <div className="w-full max-w-md border-4 border-red-600 p-8 bg-white relative shadow-[12px_12px_0px_0px_rgba(220,38,38,1)] animate-in zoom-in-95 duration-200">
+            <div className="max-h-[90vh] w-full max-w-md overflow-y-auto border-4 border-red-600 p-5 sm:p-8 bg-white relative shadow-[6px_6px_0px_0px_rgba(220,38,38,1)] sm:shadow-[12px_12px_0px_0px_rgba(220,38,38,1)] animate-in zoom-in-95 duration-200">
               <button
                 onClick={() => {
                   setShowConfirmDelete(false);
@@ -186,7 +186,7 @@ export default function SettingsPage() {
                 <X className="size-6" />
               </button>
               
-              <h2 className="text-2xl font-black uppercase tracking-tighter text-red-600 mb-6 flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tighter text-red-600 mb-6 flex items-center gap-2 pr-10">
                 <ShieldAlert className="size-6 text-red-600" /> Konto löschen?
               </h2>
 
@@ -204,7 +204,7 @@ export default function SettingsPage() {
                   placeholder="LÖSCHEN"
                   className="border-4 border-red-600 rounded-none h-12 px-4 font-black uppercase bg-white w-full focus:ring-0 focus-visible:ring-0"
                 />
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     onClick={handleDeleteAccount}
                     disabled={deleteConfirmationText.toUpperCase() !== "LÖSCHEN"}

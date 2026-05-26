@@ -23,11 +23,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://cloudsorted.vercel.app"),
   title: {
-    default: "CloudSorted | Der KI-Agent für dein Google Drive & OneDrive",
+    default: "CloudSorted | Google Drive und OneDrive automatisch aufräumen",
     template: "%s | CloudSorted"
   },
-  description: "Bändige das Cloud-Chaos. CloudSorted ist der intelligente KI-Assistent für Freelancer, der Google Drive und OneDrive automatisch sortiert, benennt und strukturiert.",
-  keywords: ["Cloud Management", "KI Agent", "Google Drive aufräumen", "OneDrive organisieren", "SaaS Freelancer", "Dateimanagement Automation", "Cloud Struktur", "KI Assistent"],
+  description: "CloudSorted hilft dir, Google Drive und OneDrive automatisch aufzuräumen, Dateien zu sortieren und Cloud-Ordner einfach zu organisieren.",
+  keywords: [
+    "Google Drive aufräumen",
+    "OneDrive organisieren",
+    "Cloud Dateien sortieren",
+    "Dateien automatisch organisieren",
+    "Cloud Speicher aufräumen",
+    "Dateien sortieren",
+    "Cloud Ordnung",
+  ],
   authors: [{ name: "CloudSorted Team" }],
   creator: "CloudSorted",
   publisher: "CloudSorted",
@@ -40,8 +48,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "CloudSorted | KI-gestützte Cloud-Organisation",
-    description: "Bringe Ordnung in deinen Cloud-Speicher mit künstlicher Intelligenz. Automatisch, sicher und intelligent.",
+    title: "CloudSorted | Google Drive und OneDrive automatisch aufräumen",
+    description: "Sortiere Cloud-Dateien, organisiere Ordner und räume Google Drive oder OneDrive automatisch auf.",
     url: "https://cloudsorted.vercel.app",
     siteName: "CloudSorted",
     locale: "de_DE",
@@ -57,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CloudSorted | KI-Cloud-Agent",
-    description: "Automatische Struktur für Google Drive & OneDrive. Spare Stunden beim Sortieren.",
+    title: "CloudSorted | Cloud Dateien automatisch sortieren",
+    description: "Google Drive aufräumen, OneDrive organisieren und Dateien automatisch sortieren.",
     images: ["/assets/cloud_header.png"],
     creator: "@cloudsorted",
   },
@@ -87,7 +95,7 @@ export default function RootLayout({
     "name": "CloudSorted",
     "operatingSystem": "Web",
     "applicationCategory": "BusinessApplication",
-    "description": "Intelligenter KI-Assistent für Cloud-Speicher wie Google Drive und OneDrive.",
+    "description": "Web-App zum automatischen Aufräumen, Sortieren und Organisieren von Cloud-Dateien in Google Drive und OneDrive.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -98,6 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>

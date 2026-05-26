@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle2,
-  Cloud,
   FileText,
   FolderTree,
   Loader2,
-  ChevronRight,
   ArrowRight,
   ShieldCheck,
   Zap
@@ -52,34 +50,34 @@ export function InteractiveCloudDemo() {
   };
 
   return (
-    <div className="relative overflow-hidden bg-white border-4 border-black w-full max-w-5xl mx-auto flex flex-col group/demo">
-      <div className="relative z-10 border-b-4 border-black p-6 bg-white">
+    <div className="relative min-w-0 overflow-hidden bg-white border-4 border-black w-full max-w-5xl mx-auto flex flex-col group/demo">
+      <div className="relative z-10 border-b-4 border-black p-4 bg-white sm:p-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <p className="font-bold tracking-widest uppercase text-xs">Live Experience</p>
-            <h2 className="mt-1 text-3xl font-black uppercase tracking-tighter text-black">
+            <h2 className="mt-1 text-2xl font-black uppercase tracking-tighter text-black sm:text-3xl">
               Perfect Your Cloud
             </h2>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:gap-2 sm:overflow-visible sm:pb-0">
             {["connect", "scan", "propose", "success"].map((s, i) => (
-              <div key={s} className="flex items-center">
+              <div key={s} className="flex shrink-0 items-center">
                 <div className={cn(
-                  "size-8 flex items-center justify-center text-xs font-black uppercase transition-all border-2 border-black",
+                  "size-7 sm:size-8 flex items-center justify-center text-xs font-black uppercase transition-all border-2 border-black",
                   step === s ? "bg-black text-white" : 
                   (i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-gray-200 text-black" : "bg-white text-gray-300 border-gray-300")
                 )}>
                   {i < ["connect", "scan", "propose", "success"].indexOf(step) ? <CheckCircle2 className="size-5" /> : i + 1}
                 </div>
-                {i < 3 && <div className={cn("w-6 md:w-12 h-1 mx-1 md:mx-2", i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-black" : "bg-gray-200")} />}
+                {i < 3 && <div className={cn("w-5 md:w-12 h-1 mx-1 md:mx-2", i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-black" : "bg-gray-200")} />}
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 h-[650px] md:h-[580px] flex flex-col p-0 overflow-hidden bg-white">
+      <div className="relative z-10 min-h-[610px] md:h-[580px] md:min-h-0 flex flex-col p-0 overflow-hidden bg-white">
         <AnimatePresence mode="wait">
           {step === "connect" && (
             <motion.div 
@@ -87,16 +85,16 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="flex-1 flex flex-col items-center justify-center p-8 text-center overflow-y-auto"
+              className="flex-1 flex flex-col items-center justify-center p-5 text-center overflow-y-auto sm:p-8"
             >
               <div className="max-w-md space-y-6">
-                <h3 className="text-4xl font-black uppercase tracking-tighter">Quelle wählen</h3>
+                <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter">Quelle wählen</h3>
                 <p className="text-gray-500 font-bold uppercase text-xs">Wähle den Speicherort, an dem dein Chaos wohnt.</p>
                 
-                <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4">
                   <Button 
                     variant="outline" 
-                    className={cn("h-32 flex-col gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "drive" && "bg-black text-white")}
+                    className={cn("h-24 sm:h-32 flex-col gap-3 sm:gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "drive" && "bg-black text-white")}
                     onClick={() => setCloud("drive")}
                   >
                     <svg className="size-8 group-hover:opacity-90" viewBox="0 0 24 24">
@@ -109,7 +107,7 @@ export function InteractiveCloudDemo() {
                   </Button>
                   <Button 
                     variant="outline" 
-                    className={cn("h-32 flex-col gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "onedrive" && "bg-black text-white")}
+                    className={cn("h-24 sm:h-32 flex-col gap-3 sm:gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "onedrive" && "bg-black text-white")}
                     onClick={() => setCloud("onedrive")}
                   >
                     <svg className="size-8" viewBox="0 0 23 23">
@@ -139,15 +137,15 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              className="flex-1 flex flex-col p-6 lg:p-8 overflow-y-auto min-h-0"
+              className="flex-1 flex flex-col p-5 sm:p-6 lg:p-8 overflow-y-auto min-h-0"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center flex-1">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1">
                 <div className="space-y-6">
                   <div className="space-y-4">
                     <div className="inline-flex items-center px-3 py-1 border-2 border-black font-black uppercase text-xs">
                       <Loader2 className="size-4 mr-2 animate-spin" /> Deep-Scan Aktiv
                     </div>
-                    <h3 className="text-4xl font-black uppercase tracking-tighter leading-none">Muster erkennen.</h3>
+                    <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter leading-none">Muster erkennen.</h3>
                     <p className="text-gray-500 font-bold uppercase text-xs">Der Agent ordnet das Chaos im Hintergrund.</p>
                   </div>
                   
@@ -157,16 +155,16 @@ export function InteractiveCloudDemo() {
                       <span className="text-3xl font-black">{progress}%</span>
                     </div>
                     
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="p-4 border-4 border-black text-center bg-white">
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                      <div className="p-3 sm:p-4 border-4 border-black text-center bg-white">
                         <p className="text-[10px] font-bold uppercase text-gray-500 mb-1 tracking-widest">Dateien</p>
                         <p className="text-2xl font-black">{Math.floor(progress * 1.4)}</p>
                       </div>
-                      <div className="p-4 border-4 border-black text-center bg-white">
+                      <div className="p-3 sm:p-4 border-4 border-black text-center bg-white">
                         <p className="text-[10px] font-bold uppercase text-gray-500 mb-1 tracking-widest">Cluster</p>
                         <p className="text-2xl font-black">{Math.floor(progress * 0.12)}</p>
                       </div>
-                      <div className="p-4 border-4 border-black text-center bg-white">
+                      <div className="p-3 sm:p-4 border-4 border-black text-center bg-white">
                         <p className="text-[10px] font-bold uppercase text-gray-500 mb-1 tracking-widest">Sicherheit</p>
                         <p className="text-2xl font-black">{Math.min(98, 40 + Math.floor(progress * 0.58))}%</p>
                       </div>
@@ -175,7 +173,7 @@ export function InteractiveCloudDemo() {
                 </div>
                 
                 <div className="relative">
-                  <div className="bg-white border-4 border-black overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[340px] flex flex-col">
+                  <div className="bg-white border-4 border-black overflow-hidden sm:rotate-2 hover:rotate-0 transition-transform duration-500 max-h-[300px] sm:max-h-[340px] flex flex-col">
                      <div className="bg-black text-white p-4 flex items-center border-b-4 border-black font-black uppercase text-xs tracking-widest shrink-0">
                         cloud_root / messy_files
                      </div>
@@ -212,11 +210,11 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex-1 flex flex-col p-6 lg:p-8 overflow-y-auto min-h-0"
+              className="flex-1 flex flex-col p-5 sm:p-6 lg:p-8 overflow-y-auto min-h-0"
             >
-              <div className="flex flex-col lg:flex-row gap-8 flex-1">
+              <div className="flex min-w-0 flex-col lg:flex-row gap-6 lg:gap-8 flex-1">
                 <div className="lg:w-1/3 space-y-6">
-                  <h3 className="text-4xl font-black uppercase tracking-tighter leading-none">Struktur bereit.</h3>
+                  <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter leading-none">Struktur bereit.</h3>
                   <p className="text-xs font-bold text-gray-500 uppercase leading-relaxed">
                     Agent hat 14 Projekte erkannt. Hier ist deine neue Hierarchie.
                   </p>
@@ -245,7 +243,7 @@ export function InteractiveCloudDemo() {
                   </div>
                 </div>
                 
-                <div className="flex-1 bg-white border-4 border-black p-6 font-mono font-bold text-xs overflow-y-auto max-h-[340px] relative">
+                <div className="min-w-0 flex-1 bg-white border-4 border-black p-3 sm:p-6 font-mono font-bold text-xs overflow-x-auto overflow-y-auto max-h-[300px] sm:max-h-[340px] relative">
                   <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
                     <FolderTree className="size-48" />
                   </div>
@@ -270,7 +268,7 @@ export function InteractiveCloudDemo() {
                          animate={{ opacity: 1, x: 0 }}
                          transition={{ delay: i * 0.05 }}
                          className={cn(
-                           "flex items-center py-2 px-3 hover:bg-black hover:text-white transition-colors cursor-default",
+                           "flex min-w-max items-center py-2 px-3 hover:bg-black hover:text-white transition-colors cursor-default",
                            item.root && "mt-4 border-b-2 border-black pb-1"
                          )}
                          style={{ paddingLeft: `${(item.indent || 0) * 1.5 + 0.5}rem` }}
@@ -302,13 +300,13 @@ export function InteractiveCloudDemo() {
               key="success"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex-1 flex flex-col items-center justify-center p-6 lg:p-8 text-center overflow-y-auto"
+              className="flex-1 flex flex-col items-center justify-center p-5 sm:p-6 lg:p-8 text-center overflow-y-auto"
             >
-               <div className="size-24 border-4 border-black flex items-center justify-center mb-8 relative bg-black text-white rotate-6 shrink-0">
+               <div className="size-20 sm:size-24 border-4 border-black flex items-center justify-center mb-6 sm:mb-8 relative bg-black text-white rotate-6 shrink-0">
                   <CheckCircle2 className="size-12" />
                </div>
                
-               <h3 className="text-5xl font-black uppercase tracking-tighter mb-4">Aufgeräumt.</h3>
+               <h3 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter mb-4">Aufgeräumt.</h3>
                <p className="text-gray-500 font-bold uppercase text-xs max-w-md mx-auto mb-8 leading-relaxed">
                  Dateien umbenannt. Ordner strukturiert. Deine Cloud ist sauber.
                </p>
@@ -320,17 +318,17 @@ export function InteractiveCloudDemo() {
                </div>
                
                <div className="mt-8 pt-6 border-t-4 border-black w-full max-w-xl shrink-0">
-                  <div className="grid grid-cols-3 gap-6 text-center border-x-4 border-black p-3 bg-white">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-6 text-center border-x-4 border-black p-3 bg-white">
                      <div>
-                        <p className="text-3xl font-black">45</p>
+                        <p className="text-2xl sm:text-3xl font-black">45</p>
                         <p className="text-[9px] font-bold uppercase text-gray-500 mt-1 tracking-widest">Verschoben</p>
                      </div>
                      <div className="border-x-4 border-black px-2">
-                        <p className="text-3xl font-black">12</p>
+                        <p className="text-2xl sm:text-3xl font-black">12</p>
                         <p className="text-[9px] font-bold uppercase text-gray-500 mt-1 tracking-widest">Erstellt</p>
                      </div>
                      <div>
-                        <p className="text-3xl font-black">1.2s</p>
+                        <p className="text-2xl sm:text-3xl font-black">1.2s</p>
                         <p className="text-[9px] font-bold uppercase text-gray-500 mt-1 tracking-widest">Dauer</p>
                      </div>
                   </div>
@@ -340,7 +338,7 @@ export function InteractiveCloudDemo() {
         </AnimatePresence>
       </div>
 
-      <div className="p-4 border-t-4 border-black bg-white flex items-center justify-center gap-4 font-black text-xs uppercase tracking-widest relative z-10">
+      <div className="p-4 border-t-4 border-black bg-white flex items-center justify-center gap-3 font-black text-[10px] sm:text-xs uppercase tracking-widest relative z-10 text-center">
         <ShieldCheck className="size-5" />
         Safe Sandbox • Keine echten Änderungen
       </div>
