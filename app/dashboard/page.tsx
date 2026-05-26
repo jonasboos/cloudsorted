@@ -1,152 +1,67 @@
-import {
-  Activity,
-  BrainCircuit,
-  Cloud,
-  FileCog,
-  FolderTree,
-  Sparkles,
-  Zap,
-} from "lucide-react";
-
+import { Cloud, Zap, CheckCircle2, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { PageHeader, StatCard, StatusPill } from "./_components/page-section";
-
-const activities = [
-  {
-    title: "Projekt-Cluster vorbereitet",
-    detail: "Kunde Mayer / Website Relaunch / 42 Dateien",
-    time: "vor 12 Min",
-    icon: FolderTree,
-  },
-  {
-    title: "Naming-Regel simuliert",
-    detail: "Rechnungen erhalten ein einheitliches Datumsformat",
-    time: "vor 1 Std",
-    icon: FileCog,
-  },
-  {
-    title: "Drive Scan abgeschlossen",
-    detail: "1.284 Dateien analysiert, 19 Hinweise gefunden",
-    time: "heute",
-    icon: Cloud,
-  },
-];
 
 export default function DashboardPage() {
   return (
-    <div>
-      <PageHeader
-        eyebrow="Workspace Übersicht"
-        title="Ein ruhiges Cockpit für deine Cloud-Ordnung."
-        description="Der Prototyp zeigt, wie CloudSorted Dateien analysiert, Vorschläge vorbereitet und Risiken sichtbar macht. Alles hier ist reines Frontend."
-        action={
-          <Button className="h-11 rounded-lg">
-            <Zap className="size-4" />
-            Demo-Scan starten
-          </Button>
-        }
-      />
-
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          title="Verbundene Clouds"
-          value="2"
-          detail="Google Drive und OneDrive sind als Demo-Quellen sichtbar."
-          icon={Cloud}
-          tone="blue"
-        />
-        <StatCard
-          title="Agent Status"
-          value="Bereit"
-          detail="Keine echte Aktion aktiv. Der Agent wartet im Demo-Modus."
-          icon={Activity}
-          tone="emerald"
-        />
-        <StatCard
-          title="Erkannte Cluster"
-          value="14"
-          detail="Kunden, Projekte und Archive als visuelle Vorschau."
-          icon={BrainCircuit}
-          tone="violet"
-        />
-        <StatCard
-          title="Ordnungs-Score"
-          value="86%"
-          detail="Statischer Score für die Dashboard-Darstellung."
-          icon={Sparkles}
-          tone="amber"
-        />
+    <div className="max-w-5xl">
+      <div className="mb-16">
+        <h1 className="text-[6vw] sm:text-[4vw] font-black uppercase leading-[0.85] tracking-tighter mb-6">
+          Übersicht.
+        </h1>
+        <p className="text-xl font-bold uppercase max-w-2xl text-gray-500">
+          Dein MVP-Dashboard zur automatischen Bereinigung von Google Drive und OneDrive.
+        </p>
       </div>
 
-      <div className="mt-6 grid gap-6 xl:grid-cols-[1.35fr_0.65fr]">
-        <Card className="border-white/10 bg-white/[0.035]">
-          <CardHeader className="flex flex-row items-start justify-between gap-4">
-            <div>
-              <CardTitle className="text-white">Aktivität</CardTitle>
-              <CardDescription>Die wichtigsten Demo-Ereignisse</CardDescription>
-            </div>
-            <StatusPill tone="slate">Heute</StatusPill>
-          </CardHeader>
-          <CardContent className="grid gap-3">
-            {activities.map((activity) => {
-              const Icon = activity.icon;
+      <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="border-4 border-black p-8 hover:bg-black hover:text-white transition-colors group">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl font-black uppercase tracking-tighter">Google Drive</h2>
+            <Cloud className="size-8 group-hover:text-white" />
+          </div>
+          <div className="flex items-center gap-2 mb-6 font-bold uppercase text-sm">
+            <CheckCircle2 className="size-5 text-green-500 group-hover:text-green-400" />
+            <span>Verbunden (jonas@example.com)</span>
+          </div>
+          <Button className="w-full bg-black text-white hover:bg-white hover:text-black border-4 border-transparent hover:border-black rounded-none h-14 font-black uppercase tracking-widest text-sm group-hover:bg-white group-hover:text-black group-hover:border-black group-hover:hover:bg-black group-hover:hover:text-white group-hover:hover:border-white">
+            <Zap className="mr-2 size-5" /> Bereinigung starten
+          </Button>
+        </div>
 
-              return (
-                <div
-                  key={activity.title}
-                  className="flex items-center gap-4 rounded-lg border border-white/[0.08] bg-[#080b16] p-4"
-                >
-                  <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04] text-blue-200">
-                    <Icon className="size-5" />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-white">
-                      {activity.title}
-                    </p>
-                    <p className="mt-1 truncate text-xs text-slate-500">
-                      {activity.detail}
-                    </p>
-                  </div>
-                  <p className="text-xs text-slate-500">{activity.time}</p>
-                </div>
-              );
-            })}
-          </CardContent>
-        </Card>
+        <div className="border-4 border-black p-8 hover:bg-black hover:text-white transition-colors group">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl font-black uppercase tracking-tighter">OneDrive</h2>
+            <Cloud className="size-8 group-hover:text-white" />
+          </div>
+          <div className="flex items-center gap-2 mb-6 font-bold uppercase text-sm">
+            <ShieldAlert className="size-5 text-red-500 group-hover:text-red-400" />
+            <span>Nicht verbunden</span>
+          </div>
+          <Button className="w-full bg-white text-black hover:bg-black hover:text-white border-4 border-black rounded-none h-14 font-black uppercase tracking-widest text-sm group-hover:bg-black group-hover:text-white group-hover:border-white group-hover:hover:bg-white group-hover:hover:text-black group-hover:hover:border-transparent">
+            Verbinden
+          </Button>
+        </div>
+      </div>
 
-        <Card className="border-white/10 bg-white/[0.035]">
-          <CardHeader>
-            <CardTitle className="text-white">Heute optimiert</CardTitle>
-            <CardDescription>Mock-Metriken für die Startseite</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            {[
-              ["Dubletten erkannt", 72, "bg-emerald-300"],
-              ["Regeln angewendet", 58, "bg-blue-300"],
-              ["Freigaben geprüft", 41, "bg-amber-300"],
-            ].map(([label, value, color]) => (
-              <div key={label as string} className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-slate-400">{label}</span>
-                  <span className="font-medium text-white">{value}%</span>
-                </div>
-                <Progress
-                  value={value as number}
-                  className="h-2 bg-white/[0.08]"
-                  indicatorClassName={color as string}
-                />
+      <div className="border-4 border-black p-8">
+        <h2 className="text-3xl font-black uppercase tracking-tighter mb-8">Letzte Aktivitäten</h2>
+        <div className="divide-y-4 divide-black border-t-4 border-black">
+          {[
+            { action: "Drive-Bereinigung abgeschlossen", time: "Heute, 10:45 Uhr", status: "Erfolgreich" },
+            { action: "Metadaten-Scan gestartet", time: "Gestern, 14:20 Uhr", status: "Erfolgreich" },
+            { action: "Namensregeln angewendet", time: "Gestern, 14:25 Uhr", status: "Erfolgreich" },
+          ].map((item, index) => (
+            <div key={index} className="flex justify-between items-center py-6">
+              <div>
+                <p className="font-black uppercase text-lg">{item.action}</p>
+                <p className="font-bold uppercase text-xs text-gray-500">{item.time}</p>
               </div>
-            ))}
-          </CardContent>
-        </Card>
+              <span className="bg-black text-white px-4 py-2 font-bold uppercase text-xs">
+                {item.status}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

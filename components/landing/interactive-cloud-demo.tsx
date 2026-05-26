@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle2,
@@ -10,23 +9,12 @@ import {
   FolderTree,
   Loader2,
   Sparkles,
-  Wand2,
-  Image as ImageIcon,
-  FileType2,
   ChevronRight,
   ArrowRight,
   ShieldCheck,
   Zap
 } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
@@ -66,38 +54,34 @@ export function InteractiveCloudDemo() {
   };
 
   return (
-    <Card className="relative overflow-hidden bg-black/60 backdrop-blur-2xl border-white/10 shadow-2xl w-full max-w-5xl mx-auto min-h-[500px] flex flex-col">
-      {/* Glow Effects */}
-      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-70" />
-
-      <CardHeader className="relative z-10 border-b border-white/5 pb-6">
+    <div className="relative overflow-hidden bg-white border-4 border-black w-full max-w-5xl mx-auto min-h-[500px] flex flex-col group/demo">
+      <div className="relative z-10 border-b-4 border-black p-6 bg-white">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <CardDescription className="text-primary font-medium tracking-wide uppercase text-xs">Live Erfahrung</CardDescription>
-            <CardTitle className="mt-1 text-2xl text-white">
-              Dein Weg zur perfekten Cloud
-            </CardTitle>
+            <p className="font-bold tracking-widest uppercase text-xs">Live Experience</p>
+            <h2 className="mt-1 text-3xl font-black uppercase tracking-tighter text-black">
+              Perfect Your Cloud
+            </h2>
           </div>
           
           <div className="flex items-center gap-2">
             {["connect", "scan", "propose", "success"].map((s, i) => (
               <div key={s} className="flex items-center">
                 <div className={cn(
-                  "size-8 rounded-full flex items-center justify-center text-xs font-bold transition-all border",
-                  step === s ? "bg-primary border-primary text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]" : 
-                  (i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-primary/20 border-primary/40 text-primary" : "bg-white/5 border-white/10 text-white/30")
+                  "size-8 flex items-center justify-center text-xs font-black uppercase transition-all border-2 border-black",
+                  step === s ? "bg-black text-white" : 
+                  (i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-gray-200 text-black" : "bg-white text-gray-300 border-gray-300")
                 )}>
-                  {i < ["connect", "scan", "propose", "success"].indexOf(step) ? <CheckCircle2 className="size-4" /> : i + 1}
+                  {i < ["connect", "scan", "propose", "success"].indexOf(step) ? <CheckCircle2 className="size-5" /> : i + 1}
                 </div>
-                {i < 3 && <div className={cn("w-6 md:w-12 h-px mx-1 md:mx-2", i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-primary/40" : "bg-white/10")} />}
+                {i < 3 && <div className={cn("w-6 md:w-12 h-1 mx-1 md:mx-2", i < ["connect", "scan", "propose", "success"].indexOf(step) ? "bg-black" : "bg-gray-200")} />}
               </div>
             ))}
           </div>
         </div>
-      </CardHeader>
+      </div>
 
-      <CardContent className="relative z-10 flex-1 flex flex-col p-0 overflow-hidden">
+      <div className="relative z-10 flex-1 flex flex-col p-0 overflow-hidden bg-white">
         <AnimatePresence mode="wait">
           {step === "connect" && (
             <motion.div 
@@ -108,41 +92,34 @@ export function InteractiveCloudDemo() {
               className="flex-1 flex flex-col items-center justify-center p-8 text-center"
             >
               <div className="max-w-md space-y-6">
-                <div className="size-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6 overflow-hidden">
-                  <Image src="/assets/logo_mark.png" alt="Logo" width={48} height={48} className="object-cover" />
-                </div>
-                <h3 className="text-2xl font-bold text-white">Verbinde deine Cloud</h3>
-                <p className="text-muted-foreground">Wähle deinen Speicherort aus, um den Agenten mit der Analyse deiner Dateistruktur zu beauftragen.</p>
+                <h3 className="text-4xl font-black uppercase tracking-tighter">Select Source</h3>
+                <p className="text-gray-500 font-bold uppercase text-sm">Choose where your chaos lives right now.</p>
                 
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <Button 
                     variant="outline" 
-                    className={cn("h-24 flex-col gap-2 rounded-2xl border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/50 transition-all", cloud === "drive" && "border-primary bg-primary/10")}
+                    className={cn("h-32 flex-col gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "drive" && "bg-black text-white")}
                     onClick={() => setCloud("drive")}
                   >
-                    <div className="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
-                      <Cloud className="size-6" />
-                    </div>
-                    Google Drive
+                    <Cloud className="size-8" />
+                    <span className="font-black uppercase tracking-widest text-xs">Google Drive</span>
                   </Button>
                   <Button 
                     variant="outline" 
-                    className={cn("h-24 flex-col gap-2 rounded-2xl border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/50 transition-all", cloud === "onedrive" && "border-primary bg-primary/10")}
+                    className={cn("h-32 flex-col gap-4 border-4 border-black rounded-none bg-white hover:bg-black hover:text-white transition-all", cloud === "onedrive" && "bg-black text-white")}
                     onClick={() => setCloud("onedrive")}
                   >
-                    <div className="size-10 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-400">
-                      <ChevronRight className="size-6" />
-                    </div>
-                    OneDrive
+                    <ChevronRight className="size-8" />
+                    <span className="font-black uppercase tracking-widest text-xs">OneDrive</span>
                   </Button>
                 </div>
                 
                 <Button 
                   disabled={!cloud} 
-                  className="w-full h-12 mt-6 rounded-xl shadow-lg shadow-primary/20"
+                  className="w-full h-16 mt-6 border-4 border-black rounded-none bg-white text-black hover:bg-black hover:text-white font-black uppercase tracking-widest text-sm transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={() => setStep("scan")}
                 >
-                  Analyse starten <ArrowRight className="ml-2 size-4" />
+                  Start Analysis <ArrowRight className="ml-4 size-5 group-hover:translate-x-2 transition-transform" />
                 </Button>
               </div>
             </motion.div>
@@ -154,73 +131,68 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              className="flex-1 flex flex-col p-8"
+              className="flex-1 flex flex-col p-8 lg:p-16"
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center flex-1">
                 <div className="space-y-8">
-                  <div className="space-y-2">
-                    <Badge className="bg-primary/20 text-primary hover:bg-primary/20 border-none mb-2">
-                      <Loader2 className="size-3 mr-1.5 animate-spin" /> Deep Scan aktiv
-                    </Badge>
-                    <h3 className="text-3xl font-bold text-white leading-tight">Agent analysiert<br />deine Metadaten</h3>
-                    <p className="text-muted-foreground">Der KI-Agent erkennt Muster, Dateitypen und Zusammenhänge zwischen deinen Dokumenten.</p>
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center px-3 py-1 border-2 border-black font-black uppercase text-xs">
+                      <Loader2 className="size-4 mr-2 animate-spin" /> Deep Scan Active
+                    </div>
+                    <h3 className="text-5xl font-black uppercase tracking-tighter leading-none">Analyzing<br />Metadata.</h3>
+                    <p className="text-gray-500 font-bold uppercase text-sm">Finding patterns in the chaos.</p>
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="flex justify-between items-end">
-                      <span className="text-sm font-medium text-white">Progress</span>
-                      <span className="text-primary font-mono text-xl font-bold">{progress}%</span>
+                    <div className="flex justify-between items-end border-b-4 border-black pb-2">
+                      <span className="text-sm font-black uppercase tracking-widest">Progress</span>
+                      <span className="text-3xl font-black">{progress}%</span>
                     </div>
-                    <Progress value={progress} className="h-3 bg-white/5" indicatorClassName="bg-gradient-to-r from-primary to-accent" />
                     
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
-                        <p className="text-xs text-muted-foreground mb-1 uppercase tracking-tighter">Files</p>
-                        <p className="text-lg font-bold text-white">{Math.floor(progress * 1.4)}</p>
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="p-4 border-4 border-black text-center">
+                        <p className="text-xs font-bold uppercase text-gray-500 mb-1 tracking-widest">Files</p>
+                        <p className="text-3xl font-black">{Math.floor(progress * 1.4)}</p>
                       </div>
-                      <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
-                        <p className="text-xs text-muted-foreground mb-1 uppercase tracking-tighter">Clusters</p>
-                        <p className="text-lg font-bold text-white">{Math.floor(progress * 0.12)}</p>
+                      <div className="p-4 border-4 border-black text-center">
+                        <p className="text-xs font-bold uppercase text-gray-500 mb-1 tracking-widest">Clusters</p>
+                        <p className="text-3xl font-black">{Math.floor(progress * 0.12)}</p>
                       </div>
-                      <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-center">
-                        <p className="text-xs text-muted-foreground mb-1 uppercase tracking-tighter">Confidence</p>
-                        <p className="text-lg font-bold text-white">{Math.min(98, 40 + Math.floor(progress * 0.58))}%</p>
+                      <div className="p-4 border-4 border-black text-center">
+                        <p className="text-xs font-bold uppercase text-gray-500 mb-1 tracking-widest">Confidence</p>
+                        <p className="text-3xl font-black">{Math.min(98, 40 + Math.floor(progress * 0.58))}%</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full animate-pulse"></div>
-                  <Card className="relative bg-black/40 border-white/10 overflow-hidden shadow-2xl rotate-2">
-                     <div className="bg-white/5 p-3 flex items-center gap-2 border-b border-white/5">
-                        <div className="size-2 rounded-full bg-red-500/50"></div>
-                        <div className="size-2 rounded-full bg-amber-500/50"></div>
-                        <div className="size-2 rounded-full bg-green-500/50"></div>
-                        <span className="text-[10px] text-muted-foreground ml-2 font-mono">cloud_root / messy_files</span>
+                  <div className="bg-white border-4 border-black overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500">
+                     <div className="bg-black text-white p-4 flex items-center border-b-4 border-black font-black uppercase text-xs tracking-widest">
+                        cloud_root / messy_files
                      </div>
-                     <div className="p-4 space-y-3 font-mono text-[11px]">
+                     <div className="p-6 space-y-4 font-mono font-bold text-sm">
                         {messyFiles.map((f, i) => (
                           <motion.div 
                             key={f.name}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.2 }}
-                            className="flex items-center gap-3 text-white/40"
+                            className="flex items-center gap-4 text-black border-2 border-transparent hover:border-black p-2 transition-colors"
                           >
-                            <FileText className="size-3" />
+                            <FileText className="size-5" />
                             <span>{f.name}</span>
-                            <span className="ml-auto opacity-50">{f.size}</span>
+                            <span className="ml-auto text-gray-400">{f.size}</span>
                           </motion.div>
                         ))}
-                        <div className="h-20 flex items-center justify-center border-t border-white/5 mt-4 pt-4">
-                           <div className="flex flex-col items-center gap-2">
-                              <Loader2 className="size-6 text-primary animate-spin" />
-                              <span className="text-[10px] text-primary/80 animate-pulse">Clustering data...</span>
+                        <div className="h-32 flex items-center justify-center border-t-4 border-dashed border-gray-300 mt-6">
+                           <div className="flex flex-col items-center gap-4">
+                              <Loader2 className="size-8 animate-spin" />
+                              <span className="text-xs font-black uppercase tracking-widest animate-pulse">Clustering...</span>
                            </div>
                         </div>
                      </div>
-                  </Card>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -232,86 +204,83 @@ export function InteractiveCloudDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex-1 flex flex-col p-8"
+              className="flex-1 flex flex-col p-8 lg:p-16"
             >
-              <div className="flex flex-col lg:flex-row gap-8 flex-1">
-                <div className="lg:w-1/3 space-y-6">
-                  <div className="size-12 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center">
-                    <Sparkles className="size-6 text-accent" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white leading-tight">Vorschlag zur<br />Strukturierung</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Der Agent hat 14 Projekte erkannt. Hier ist der Vorschlag für deine neue, saubere Cloud-Hierarchie.
+              <div className="flex flex-col lg:flex-row gap-12 flex-1">
+                <div className="lg:w-1/3 space-y-8">
+                  <h3 className="text-5xl font-black uppercase tracking-tighter leading-none">Structure<br />Proposed.</h3>
+                  <p className="text-sm font-bold text-gray-500 uppercase leading-relaxed">
+                    Agent found 14 projects. Here is your new hierarchy.
                   </p>
                   
-                  <div className="space-y-3 pt-4">
-                     <div className="flex items-center gap-3 text-sm text-green-400">
-                        <ShieldCheck className="size-4" />
-                        <span>Keine Duplikate gefunden</span>
+                  <div className="space-y-4 py-6 border-y-4 border-black">
+                     <div className="flex items-center gap-3 font-black uppercase text-sm">
+                        <ShieldCheck className="size-6 text-green-500" />
+                        <span>0 Duplicates</span>
                      </div>
-                     <div className="flex items-center gap-3 text-sm text-white/70">
-                        <Zap className="size-4 text-primary" />
-                        <span>32 Umbenennungen geplant</span>
+                     <div className="flex items-center gap-3 font-black uppercase text-sm">
+                        <Zap className="size-6" />
+                        <span>32 Renames</span>
                      </div>
                   </div>
                   
-                  <div className="pt-8 space-y-3">
+                  <div className="pt-4 space-y-4">
                     <Button 
-                      className="w-full h-12 rounded-xl shadow-lg shadow-primary/20"
+                      className="w-full h-16 border-4 border-black rounded-none bg-black text-white hover:bg-white hover:text-black font-black uppercase tracking-widest text-sm transition-all"
                       onClick={() => setStep("success")}
                     >
-                      Änderungen anwenden
+                      Apply Changes
                     </Button>
-                    <Button variant="ghost" className="w-full text-muted-foreground" onClick={reset}>
-                      Abbrechen
+                    <Button variant="outline" className="w-full h-16 border-4 border-black rounded-none bg-white text-black hover:bg-black hover:text-white font-black uppercase tracking-widest text-sm transition-all" onClick={reset}>
+                      Cancel
                     </Button>
                   </div>
                 </div>
                 
-                <div className="flex-1 bg-black/40 border border-white/10 rounded-2xl p-6 font-mono text-sm overflow-hidden relative">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-                    <FolderTree className="size-48 text-primary" />
+                <div className="flex-1 bg-white border-4 border-black p-8 font-mono font-bold text-sm overflow-hidden relative">
+                  <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                    <FolderTree className="size-64" />
                   </div>
                   
-                  <div className="space-y-1 relative z-10">
+                  <div className="space-y-2 relative z-10">
                     {[
-                      { path: "Kunden", type: "folder", root: true },
+                      { path: "Clients", type: "folder", root: true },
                       { path: "Katherine-Smith", type: "folder", indent: 1 },
                       { path: "Project-Relaunch", type: "folder", indent: 2 },
                       { path: "01-Briefing", type: "folder", indent: 3 },
                       { path: "briefing-notes-2024.docx", type: "file", indent: 4, isNew: true },
                       { path: "02-Assets", type: "folder", indent: 3 },
                       { path: "main-logo-v2.png", type: "file", indent: 4, isNew: true },
-                      { path: "Rechnungen", type: "folder", indent: 2 },
-                      { path: "RE_2024_01.pdf", type: "file", indent: 3, isNew: true },
-                      { path: "Archiv", type: "folder", root: true },
-                      { path: "Alte-Projekte", type: "folder", indent: 1 },
+                      { path: "Invoices", type: "folder", indent: 2 },
+                      { path: "INV_2024_01.pdf", type: "file", indent: 3, isNew: true },
+                      { path: "Archive", type: "folder", root: true },
+                      { path: "Legacy", type: "folder", indent: 1 },
                     ].map((item, i) => (
                       <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.05 }}
-                        className={cn(
-                          "flex items-center py-1.5 px-3 rounded-md hover:bg-white/5 transition-colors cursor-default",
-                          item.root && "mt-4 font-bold text-white"
-                        )}
-                        style={{ paddingLeft: `${(item.indent || 0) * 1.5 + 0.75}rem` }}
+                         key={i}
+                         initial={{ opacity: 0, x: -10 }}
+                         animate={{ opacity: 1, x: 0 }}
+                         transition={{ delay: i * 0.05 }}
+                         className={cn(
+                           "flex items-center py-2 px-3 hover:bg-black hover:text-white transition-colors cursor-default",
+                           item.root && "mt-6 border-b-2 border-black pb-1"
+                         )}
+                         style={{ paddingLeft: `${(item.indent || 0) * 2 + 1}rem` }}
                       >
-                        <span className="mr-2 opacity-30 text-muted-foreground">
-                          {item.indent ? '└' : ''}
-                        </span>
-                        {item.type === 'folder' ? (
-                          <FolderTree className="size-4 mr-2 text-blue-400" />
-                        ) : (
-                          <FileText className="size-4 mr-2 text-muted-foreground" />
-                        )}
-                        <span className={cn(item.root ? "text-white" : "text-white/70", item.isNew && "text-green-400")}>
-                          {item.path}
-                        </span>
-                        {item.isNew && (
-                          <span className="ml-2 text-[8px] bg-green-500/20 text-green-400 px-1 rounded uppercase">Vorschlag</span>
-                        )}
+                         <span className="mr-3 opacity-30">
+                           {item.indent ? '└' : ''}
+                         </span>
+                         {item.type === 'folder' ? (
+                           <FolderTree className="size-5 mr-3" />
+                         ) : (
+                           <FileText className="size-5 mr-3 opacity-50" />
+                         )}
+                         <span className={cn(item.isNew && "text-green-500")}>
+                           {item.path}
+                         </span>
+                         {item.isNew && (
+                           <span className="ml-auto text-[10px] bg-black text-white px-2 py-1 uppercase tracking-widest group-hover:bg-white group-hover:text-black">Proposed</span>
+                         )}
                       </motion.div>
                     ))}
                   </div>
@@ -325,67 +294,48 @@ export function InteractiveCloudDemo() {
               key="success"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex-1 flex flex-col items-center justify-center p-8 text-center"
+              className="flex-1 flex flex-col items-center justify-center p-8 lg:p-16 text-center"
             >
-               <div className="size-24 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center mb-8 relative">
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1.5, opacity: 0 }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                    className="absolute inset-0 rounded-full border border-green-500/40"
-                  />
-                  <CheckCircle2 className="size-12 text-green-400" />
+               <div className="size-32 border-4 border-black flex items-center justify-center mb-12 relative bg-black text-white rotate-6">
+                  <CheckCircle2 className="size-16" />
                </div>
                
-               <h3 className="text-3xl font-bold text-white mb-4">Cloud erfolgreich sortiert</h3>
-               <p className="text-muted-foreground max-w-md mx-auto mb-10">
-                 Alle Dateien wurden umbenannt und in die neue Struktur verschoben. Deine Cloud ist jetzt 100% ordentlich.
+               <h3 className="text-6xl font-black uppercase tracking-tighter mb-6">Sorted.</h3>
+               <p className="text-gray-500 font-bold uppercase text-sm max-w-md mx-auto mb-12 leading-relaxed">
+                 Files renamed. Folders structured. 100% clean cloud.
                </p>
                
-               <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="rounded-xl px-8" onClick={reset}>
-                    Nochmal versuchen
-                  </Button>
-                  <Button variant="outline" size="lg" className="rounded-xl px-8 border-white/10 hover:bg-white/5" asChild>
-                    <a href="/dashboard">Zum Dashboard</a>
+               <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md">
+                  <Button className="flex-1 h-16 border-4 border-black rounded-none bg-black text-white hover:bg-white hover:text-black font-black uppercase tracking-widest text-sm transition-all" onClick={reset}>
+                    Run Again
                   </Button>
                </div>
                
-               <div className="mt-12 pt-12 border-t border-white/5 w-full max-w-lg">
-                  <p className="text-xs text-muted-foreground uppercase tracking-widest mb-4">Statistik dieser Demo</p>
-                  <div className="grid grid-cols-3 gap-8">
+               <div className="mt-16 pt-12 border-t-4 border-black w-full max-w-2xl">
+                  <div className="grid grid-cols-3 gap-8 text-center border-x-4 border-black p-4">
                      <div>
-                        <p className="text-xl font-bold text-white">45</p>
-                        <p className="text-[10px] text-muted-foreground">Files verschoben</p>
+                        <p className="text-4xl font-black">45</p>
+                        <p className="text-[10px] font-bold uppercase text-gray-500 mt-2 tracking-widest">Moved</p>
+                     </div>
+                     <div className="border-x-4 border-black px-4">
+                        <p className="text-4xl font-black">12</p>
+                        <p className="text-[10px] font-bold uppercase text-gray-500 mt-2 tracking-widest">Created</p>
                      </div>
                      <div>
-                        <p className="text-xl font-bold text-white">12</p>
-                        <p className="text-[10px] text-muted-foreground">Ordner erstellt</p>
-                     </div>
-                     <div>
-                        <p className="text-xl font-bold text-white">1.2s</p>
-                        <p className="text-[10px] text-muted-foreground">Rechenzeit</p>
+                        <p className="text-4xl font-black">1.2s</p>
+                        <p className="text-[10px] font-bold uppercase text-gray-500 mt-2 tracking-widest">Time</p>
                      </div>
                   </div>
                </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </CardContent>
-
-      <div className="p-4 border-t border-white/5 bg-black/40 flex items-center justify-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest relative z-10">
-        <ShieldCheck className="size-3" />
-        Sicherheits-Garantie: Keine echten Datenänderungen in dieser Demo
       </div>
-    </Card>
-  );
-}
 
-// Helper components
-function Badge({ children, className }: { children: React.ReactNode, className?: string }) {
-  return (
-    <span className={cn("inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-white/10", className)}>
-      {children}
-    </span>
+      <div className="p-4 border-t-4 border-black bg-white flex items-center justify-center gap-4 font-black text-xs uppercase tracking-widest relative z-10">
+        <ShieldCheck className="size-5" />
+        Safe Sandbox • No Real Modifications
+      </div>
+    </div>
   );
 }
